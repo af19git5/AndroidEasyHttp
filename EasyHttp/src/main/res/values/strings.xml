@@ -1,0 +1,24 @@
+<resources>
+	<string name="easy_http_record">Easy Http Record</string>
+	<string name="easy_http_record_details">Record Details</string>
+	<string name="easy_http_no_record">No record</string>
+	<string name="easy_http_notice">Notice</string>
+	<string name="easy_http_clear_notice">Do you want to clear all records.</string>
+	<string name="easy_http_yes">yes</string>
+	<string name="easy_http_no">no</string>
+	<string name="easy_http_search_url_hint">Search url</string>
+	<string name="easy_http_general">General</string>
+	<string name="easy_http_request">Request</string>
+	<string name="easy_http_response">Response</string>
+	<string name="easy_http_url">Url</string>
+	<string name="easy_http_method">Method</string>
+	<string name="easy_http_send_time">Send Time</string>
+	<string name="easy_http_spend_time">Spend Time</string>
+	<string name="easy_http_error_message">Error Message</string>
+	<string name="easy_http_status_code">Status Code</string>
+	<string name="easy_http_headers">Headers</string>
+	<string name="easy_http_cookies">Cookies</string>
+	<string name="easy_http_body">Body</string>
+	<string name="easy_http_response_empty">Response Empty</string>
+	<string name="easy_http_response_body_empty">Response body is empty.</string>
+</resources>

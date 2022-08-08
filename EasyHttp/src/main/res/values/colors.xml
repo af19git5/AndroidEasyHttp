@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!--  主顏色色系  -->
+	<color name="easyHttpColor01">#2699FB</color>
+	<color name="easyHttpColor02">#7FC4FD</color>
+	<color name="easyHttpColor03">#BCE0FD</color>
+	<color name="easyHttpColor04">#F1F9FF</color>
+	<color name="easyHttpColor05">#FFFFFF</color>
+	<color name="easyHttpColor06">#00D30B</color>
+	<color name="easyHttpColor07">#FFD706</color>
+	<color name="easyHttpColor08">#D80000</color>
+	<color name="easyHttpColor09">#000000</color>
+
+	<!--  文字色系  -->
+	<color name="easyHttpColorText01">@color/easyHttpColor01</color>
+	<color name="easyHttpColorText02">@color/easyHttpColor02</color>
+	<color name="easyHttpColorText03">@color/easyHttpColor03</color>
+
+	<!--  http狀態色系  -->
+	<color name="easyHttpStatusColorSuccess">@color/easyHttpColor06</color>
+	<color name="easyHttpStatusColorWarring">@color/easyHttpColor07</color>
+	<color name="easyHttpStatusColorError">@color/easyHttpColor08</color>
+
+	<!--  按鈕色系  -->
+	<color name="easyHttpColorTabOnClick">@color/easyHttpColor01</color>
+	<color name="easyHttpColorTabNoClick">@color/easyHttpColor03</color>
+
+	<!--  背景色系  -->
+	<color name="easyHttpColorBackground">@color/easyHttpColor05</color>
+
+	<!--  其他色系  -->
+	<color name="easyHttpColorNo">#00000000</color>
+	<color name="easyHttpColorMask">#B2000000</color>
+	<color name="easyHttpColorShadow">@color/easyHttpColor01</color>
+	<color name="easyHttpColorLine">@color/easyHttpColor02</color>
+	<color name="easyHttpColorEffect">@color/easyHttpColor01</color>
+
+</resources>

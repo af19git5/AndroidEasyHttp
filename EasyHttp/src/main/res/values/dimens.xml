@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="easy_http_ts_sp01">12sp</dimen>
+    <dimen name="easy_http_ts_sp02">14sp</dimen>
+    <dimen name="easy_http_ts_sp03">15sp</dimen>
+    <dimen name="easy_http_ts_sp04">18sp</dimen>
+    <dimen name="easy_http_ts_sp05">20sp</dimen>
+
+    <dimen name="easy_http_ts_dp01">12dp</dimen>
+    <dimen name="easy_http_ts_dp02">14dp</dimen>
+    <dimen name="easy_http_ts_dp03">15dp</dimen>
+    <dimen name="easy_http_ts_dp04">18dp</dimen>
+    <dimen name="easy_http_ts_dp05">20dp</dimen>
+
+    <dimen name="easy_http_radius_dp01">5dp</dimen>
+    <dimen name="easy_http_radius_dp02">10dp</dimen>
+
+</resources>

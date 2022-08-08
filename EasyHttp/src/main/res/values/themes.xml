@@ -1,0 +1,23 @@
+<resources>
+
+	<style name="EasyHttpTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="colorPrimary">@color/easyHttpColor01</item>
+		<item name="colorPrimaryVariant">@color/easyHttpColor02</item>
+		<item name="colorOnPrimary">@color/easyHttpColor01</item>
+		<item name="colorSecondary">@color/easyHttpColor01</item>
+		<item name="android:statusBarColor">@color/easyHttpColor09</item>
+	</style>
+
+	<style name="EasyHttpAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+		<item name="android:colorAccent">@color/easyHttpColor01</item>
+		<item name="android:textColor">@color/easyHttpColor01</item>
+		<item name="android:textColorPrimary">@color/easyHttpColor01</item>
+		<item name="android:background">@color/easyHttpColorBackground</item>
+	</style>
+
+	<style name="EasyHttpTabLayoutText">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textColor">@color/easyHttpColorText03</item>
+	</style>
+</resources>

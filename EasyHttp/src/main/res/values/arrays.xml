@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="easy_http_record_details_title">
+		<item>@string/easy_http_general</item>
+		<item>@string/easy_http_request</item>
+		<item>@string/easy_http_response</item>
+	</string-array>
+
+</resources>
