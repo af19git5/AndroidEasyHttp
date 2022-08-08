@@ -29,29 +29,15 @@ class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
         initRecyclerView()
     }
 
-    override fun startActivity(intent: Intent) {
-        super.startActivity(intent)
-        overridePendingTransition(
-            R.anim.easy_http_anim_slide_enter, R.anim.easy_http_anim_slide_exit
-        )
-    }
-
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(
-            R.anim.easy_http_anim_back_enter, R.anim.easy_http_anim_back_exit
-        )
-    }
-
     override fun onClick(view: View) {
         if (CommonUtils.isFastDoubleClick(view, 1000)) {
             return
         }
         when (view.id) {
-            binding.ivLeft.id -> {
+            binding.ivClose.id -> {
                 finish()
             }
-            binding.ivRight.id -> {
+            binding.ivClear.id -> {
                 AlertDialog.Builder(this, R.style.EasyHttpAlertDialogTheme)
                     .setTitle(R.string.easy_http_notice)
                     .setMessage(R.string.easy_http_clear_notice)
@@ -59,7 +45,7 @@ class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
                     .setNegativeButton(R.string.easy_http_no) { _, _ -> }
                     .show()
             }
-            binding.ivClear.id -> {
+            binding.ivClearSearch.id -> {
                 viewModel.searchText.value = ""
             }
             binding.fabCookie.id -> {

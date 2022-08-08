@@ -1,6 +1,5 @@
 package com.jimmyworks.easyhttp
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.jimmyworks.easyhttp.activity.EasyHttpRecordActivity
@@ -77,12 +76,9 @@ class EasyHttp {
         }
 
         @JvmStatic
-        fun intentEasyHttpRecord(activity: Activity) {
-            val intent = Intent(activity, EasyHttpRecordActivity::class.java)
-            activity.startActivity(intent)
-            activity.overridePendingTransition(
-                R.anim.easy_http_anim_slide_enter, R.anim.easy_http_anim_slide_exit
-            )
+        fun intentEasyHttpRecord(context: Context) {
+            val intent = Intent(context, EasyHttpRecordActivity::class.java)
+            context.startActivity(intent)
         }
     }
 }
