@@ -5,6 +5,7 @@ import android.content.Intent
 import com.jimmyworks.easyhttp.activity.EasyHttpRecordActivity
 import com.jimmyworks.easyhttp.builder.PostRequestBuilder
 import com.jimmyworks.easyhttp.builder.RequestBuilder
+import com.jimmyworks.easyhttp.builder.UploadRequestBuilder
 import com.jimmyworks.easyhttp.database.repository.HttpCookiesRepository
 import com.jimmyworks.easyhttp.service.DoRequestService
 import com.jimmyworks.easyhttp.type.HttpMethod
@@ -46,6 +47,16 @@ class EasyHttp {
         @JvmStatic
         fun method(context: Context, method: HttpMethod, url: String): PostRequestBuilder {
             return PostRequestBuilder(context, url, method)
+        }
+
+        @JvmStatic
+        fun upload(context: Context, url: String): UploadRequestBuilder {
+            return UploadRequestBuilder(context, url)
+        }
+
+        @JvmStatic
+        fun upload(context: Context, method: HttpMethod, url: String): UploadRequestBuilder {
+            return UploadRequestBuilder(context, url, method)
         }
 
         @JvmStatic

@@ -17,7 +17,7 @@ import java.io.File
  *
  * @author Jimmy Kang
  */
-open class UploadBuilder : RequestBuilder {
+open class UploadRequestBuilder : RequestBuilder {
 
     private val multipartBodyBuilder = MultipartBody.Builder()
     private val requestStringBuilder = StringBuilder("Form-data\n\n")
@@ -30,7 +30,7 @@ open class UploadBuilder : RequestBuilder {
         httpMethod
     )
 
-    fun addMultipartParameter(key: String, value: String): UploadBuilder {
+    fun addMultipartParameter(key: String, value: String): UploadRequestBuilder {
         multipartBodyBuilder.addFormDataPart(key, value)
         requestStringBuilder
             .append(key)
@@ -40,7 +40,7 @@ open class UploadBuilder : RequestBuilder {
         return this
     }
 
-    fun addMultipartFile(key: String, fileName: String, bytes: ByteArray): UploadBuilder {
+    fun addMultipartFile(key: String, fileName: String, bytes: ByteArray): UploadRequestBuilder {
         multipartBodyBuilder.addFormDataPart(
             key,
             fileName,
@@ -55,7 +55,7 @@ open class UploadBuilder : RequestBuilder {
         return this
     }
 
-    fun addMultipartFile(key: String, file: File): UploadBuilder {
+    fun addMultipartFile(key: String, file: File): UploadRequestBuilder {
         multipartBodyBuilder.addFormDataPart(
             key,
             file.name,
