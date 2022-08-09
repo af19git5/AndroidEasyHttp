@@ -38,7 +38,7 @@
 				android:singleLine="true"
 				android:text="@string/easy_http_record"
 				android:textColor="@color/easyHttpColorBackground"
-				android:textSize="@dimen/easy_http_ts_dp05"
+				android:textSize="@dimen/easy_http_ts_sp05"
 				android:textStyle="bold"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toLeftOf="@id/iv_clear"
@@ -53,7 +53,8 @@
 				android:src="@drawable/easy_http_ic_delete"
 				android:tint="@color/easyHttpColorBackground"
 				app:layout_constraintRight_toLeftOf="@id/iv_close"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="SpeakableTextPresentCheck" />
 
 			<androidx.appcompat.widget.AppCompatImageView
 				android:id="@+id/iv_close"
@@ -65,7 +66,8 @@
 				android:src="@drawable/easy_http_ic_close"
 				android:tint="@color/easyHttpColorBackground"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="SpeakableTextPresentCheck" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -99,7 +101,7 @@
 				android:textColor="@color/easyHttpColorText01"
 				android:textColorHint="@color/easyHttpColorText03"
 				android:textSize="@dimen/easy_http_ts_sp02"
-				tools:ignore="LabelFor,TouchTargetSizeCheck" />
+				tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
 
 		</LinearLayout>
 
@@ -114,7 +116,7 @@
 			app:layout_constraintBottom_toBottomOf="@id/ll_search"
 			app:layout_constraintRight_toRightOf="@id/ll_search"
 			app:layout_constraintTop_toTopOf="@id/ll_search"
-			tools:ignore="TouchTargetSizeCheck" />
+			tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/rv_record"
@@ -136,7 +138,8 @@
 			android:textColor="@color/easyHttpColorText01"
 			android:textSize="@dimen/easy_http_ts_sp02"
 			android:visibility="@{viewModel.noRecord ? View.VISIBLE: View.GONE}"
-			app:layout_constraintTop_toBottomOf="@id/ll_search" />
+			app:layout_constraintTop_toBottomOf="@id/ll_search"
+			tools:ignore="TextContrastCheck" />
 
 		<com.google.android.material.floatingactionbutton.FloatingActionButton
 			android:id="@+id/fab_cookie"
@@ -149,7 +152,8 @@
 			app:elevation="2dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintRight_toRightOf="parent"
-			app:tint="@color/easyHttpColorBackground" />
+			app:tint="@color/easyHttpColorBackground"
+			tools:ignore="SpeakableTextPresentCheck" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

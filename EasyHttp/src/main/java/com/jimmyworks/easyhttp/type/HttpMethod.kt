@@ -2,7 +2,6 @@ package com.jimmyworks.easyhttp.type
 
 import androidx.room.TypeConverter
 import com.jimmyworks.easyhttp.exception.TypeNotFoundException
-import java.util.*
 
 /**
  * http傳輸格式

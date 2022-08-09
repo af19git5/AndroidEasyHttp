@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="viewModel"
+			type="com.jimmyworks.easyhttp.activity.model.EasyHttpCookiesViewModel" />
+	</data>
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/easyHttpColorBackground">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/cl_topBar"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:background="@color/easyHttpColor01"
+			android:elevation="2dp"
+			android:paddingStart="15dp"
+			android:paddingEnd="0dp"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<TextView
+				android:id="@+id/tv_title"
+				android:layout_width="0dp"
+				android:layout_height="50dp"
+				android:gravity="center_vertical"
+				android:singleLine="true"
+				android:text="@string/easy_http_cookies"
+				android:textColor="@color/easyHttpColorBackground"
+				android:textSize="@dimen/easy_http_ts_sp05"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/iv_clear"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/iv_clear"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:onClick="onClick"
+				android:padding="12dp"
+				android:src="@drawable/easy_http_ic_delete"
+				android:tint="@color/easyHttpColorBackground"
+				app:layout_constraintRight_toLeftOf="@id/iv_close"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="SpeakableTextPresentCheck" />
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/iv_close"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_weight="3"
+				android:onClick="onClick"
+				android:padding="10dp"
+				android:src="@drawable/easy_http_ic_close"
+				android:tint="@color/easyHttpColorBackground"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="SpeakableTextPresentCheck" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/iv_file"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:src="@drawable/easy_http_ic_file"
+			android:visibility="@{viewModel.noRecord ? View.VISIBLE : View.GONE}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:tint="@color/easyHttpColor03"
+			tools:ignore="ImageContrastCheck" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:text="@string/easy_http_cookies_empty"
+			android:textColor="@color/easyHttpColorText02"
+			android:textSize="@dimen/easy_http_ts_sp03"
+			android:visibility="@{viewModel.noRecord ? View.VISIBLE : View.GONE}"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/iv_file"
+			tools:ignore="TextContrastCheck" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rv_cookies"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:visibility="@{viewModel.noRecord ? View.GONE : View.VISIBLE }"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/cl_topBar"
+			tools:itemCount="3"
+			tools:listitem="@layout/easy_http_rv_item_cookie_host" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

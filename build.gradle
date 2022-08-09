@@ -14,9 +14,7 @@ ext {
     // App dependencies versions
     okHttp3Version = '4.10.0'
     roomVersion = '2.4.3'
-    jacksonVersion = '2.13.3'
-    javaxXmlBindVersion = '2.4.0-b180830.0359'
-    javaxXmlStreamVersion = "1.0-2"
+    gsonVersion = '2.9.1'
     underscoreVersion = '1.80'
 }
 

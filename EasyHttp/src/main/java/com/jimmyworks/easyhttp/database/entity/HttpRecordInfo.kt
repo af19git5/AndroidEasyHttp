@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.jimmyworks.easyhttp.type.HttpMethod
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -40,4 +41,4 @@ data class HttpRecordInfo(
 
     @ColumnInfo(name = "receive_time")
     var receiveTime: Date?,
-)
+) : Serializable

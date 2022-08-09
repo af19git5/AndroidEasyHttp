@@ -2,7 +2,7 @@
 <resources>
 
 	<string-array name="easy_http_record_details_title">
-		<item>@string/easy_http_general</item>
+		<item>@string/easy_http_info</item>
 		<item>@string/easy_http_request</item>
 		<item>@string/easy_http_response</item>
 	</string-array>

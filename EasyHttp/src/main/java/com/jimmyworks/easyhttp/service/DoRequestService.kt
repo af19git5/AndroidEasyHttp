@@ -1,17 +1,17 @@
 package com.jimmyworks.easyhttp.service
 
 import android.content.Context
+import com.google.gson.reflect.TypeToken
 import com.jimmyworks.easyhttp.entity.RequestInfo
 import com.jimmyworks.easyhttp.entity.ResponseInfo
 import com.jimmyworks.easyhttp.exception.HttpException
 import com.jimmyworks.easyhttp.listener.DownloadListener
+import com.jimmyworks.easyhttp.listener.JsonResponseListener
 import com.jimmyworks.easyhttp.listener.StringResponseListener
 import com.jimmyworks.easyhttp.utils.CommonUtils
 import com.jimmyworks.easyhttp.utils.FileUtils
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Response
+import com.jimmyworks.easyhttp.utils.JsonUtils.Companion.toObject
+import okhttp3.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -97,6 +97,62 @@ class DoRequestService(
                         saveRecordService.save(responseInfo)
                     }
                 }
+            }
+        })
+    }
+
+    fun <T> getJsonAsObject(clazz: Class<T>, listener: JsonResponseListener<T>) {
+        getJsonAsObject(null, clazz, listener)
+    }
+
+    fun <T> getJsonAsObject(
+        charset: Charset?,
+        clazz: Class<T>,
+        listener: JsonResponseListener<T>
+    ) {
+        getAsString(charset, object : StringResponseListener {
+            override fun onSuccess(headers: Headers, body: String) {
+                val bodyObject: T
+                try {
+                    bodyObject = body.toObject(clazz)
+                } catch (e: Exception) {
+                    listener.onError(HttpException(requestInfo.url, e.message!!))
+                    return
+                }
+
+                listener.onSuccess(headers, bodyObject)
+            }
+
+            override fun onError(e: HttpException) {
+                listener.onError(e)
+            }
+        })
+    }
+
+    fun <T> getJsonAsObject(type: TypeToken<T>, listener: JsonResponseListener<T>) {
+        getJsonAsObject(null, type, listener)
+    }
+
+    fun <T> getJsonAsObject(
+        charset: Charset?,
+        type: TypeToken<T>,
+        listener: JsonResponseListener<T>
+    ) {
+        getAsString(charset, object : StringResponseListener {
+            override fun onSuccess(headers: Headers, body: String) {
+                val bodyObject: T
+                try {
+                    bodyObject = body.toObject(type)
+                } catch (e: Exception) {
+                    listener.onError(HttpException(requestInfo.url, e.message!!))
+                    return
+                }
+
+                listener.onSuccess(headers, bodyObject)
+            }
+
+            override fun onError(e: HttpException) {
+                listener.onError(e)
             }
         })
     }

@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * http headers發送紀錄
@@ -25,6 +26,6 @@ data class HttpRecordHeaders(
     @ColumnInfo(name = "header")
     var header: String,
 
-    @ColumnInfo(name = "header_varue")
+    @ColumnInfo(name = "header_value")
     var headerValue: String,
-)
+) : Serializable

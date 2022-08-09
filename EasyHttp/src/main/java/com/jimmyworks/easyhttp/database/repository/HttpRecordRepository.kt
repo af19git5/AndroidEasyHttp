@@ -94,4 +94,16 @@ class HttpRecordRepository(context: Context) {
     fun findByUrl(url: String): LiveData<List<HttpRecordInfo>> {
         return httpRecordInfoDAO.findByUrl("%$url%")
     }
+
+    fun findById(id: Long): LiveData<HttpRecordInfo> {
+        return httpRecordInfoDAO.findById(id)
+    }
+
+    fun findRequestHeadersByRecordId(id: Long): LiveData<List<HttpRecordHeaders>> {
+        return httpRecordHeadersDAO.findByRecordIdAndIsResponse(id, false)
+    }
+
+    fun findResponseHeadersByRecordId(id: Long): LiveData<List<HttpRecordHeaders>> {
+        return httpRecordHeadersDAO.findByRecordIdAndIsResponse(id, true)
+    }
 }

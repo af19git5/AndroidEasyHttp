@@ -1,20 +1,18 @@
 package com.jimmyworks.easyhttp.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jimmyworks.easyhttp.EasyHttp
 import com.jimmyworks.easyhttp.R
 import com.jimmyworks.easyhttp.activity.model.EasyHttpRecordViewModel
 import com.jimmyworks.easyhttp.adapter.EasyHttpRecordAdapter
 import com.jimmyworks.easyhttp.databinding.EasyHttpActivityRecordBinding
-import com.jimmyworks.easyhttp.utils.CommonUtils
 
 
-class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
+class EasyHttpRecordActivity : SingleClickActivity() {
 
     private lateinit var binding: EasyHttpActivityRecordBinding
     private lateinit var viewModel: EasyHttpRecordViewModel
@@ -29,10 +27,7 @@ class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
         initRecyclerView()
     }
 
-    override fun onClick(view: View) {
-        if (CommonUtils.isFastDoubleClick(view, 1000)) {
-            return
-        }
+    override fun onSingleClick(view: View) {
         when (view.id) {
             binding.ivClose.id -> {
                 finish()
@@ -40,7 +35,7 @@ class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
             binding.ivClear.id -> {
                 AlertDialog.Builder(this, R.style.EasyHttpAlertDialogTheme)
                     .setTitle(R.string.easy_http_notice)
-                    .setMessage(R.string.easy_http_clear_notice)
+                    .setMessage(R.string.easy_http_record_clear_notice)
                     .setPositiveButton(R.string.easy_http_yes) { _, _ -> viewModel.clearRecord() }
                     .setNegativeButton(R.string.easy_http_no) { _, _ -> }
                     .show()
@@ -49,7 +44,7 @@ class EasyHttpRecordActivity : AppCompatActivity(), View.OnClickListener {
                 viewModel.searchText.value = ""
             }
             binding.fabCookie.id -> {
-
+                EasyHttp.intentEasyHttpCookies(this)
             }
         }
     }

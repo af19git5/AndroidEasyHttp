@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import okhttp3.Cookie
 import okhttp3.HttpUrl
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -41,7 +42,7 @@ data class HttpCookies(
 
     @ColumnInfo(name = "http_only")
     var httpOnly: Boolean
-) {
+) : Serializable {
     constructor(httpUrl: HttpUrl, cookie: Cookie) : this(
         httpUrl.host,
         cookie.name,

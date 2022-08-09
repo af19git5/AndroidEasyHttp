@@ -2,6 +2,7 @@ package com.jimmyworks.easyhttp
 
 import android.content.Context
 import android.content.Intent
+import com.jimmyworks.easyhttp.activity.EasyHttpCookiesActivity
 import com.jimmyworks.easyhttp.activity.EasyHttpRecordActivity
 import com.jimmyworks.easyhttp.builder.PostRequestBuilder
 import com.jimmyworks.easyhttp.builder.RequestBuilder
@@ -87,8 +88,24 @@ class EasyHttp {
         }
 
         @JvmStatic
+        fun clearCookies(context: Context, host: String) {
+            HttpCookiesRepository(context).clearCookiesByHost(host)
+        }
+
+        @JvmStatic
+        fun clearCookies(context: Context, host: String, name: String) {
+            HttpCookiesRepository(context).clearCookiesByHostAndName(host, name)
+        }
+
+        @JvmStatic
         fun intentEasyHttpRecord(context: Context) {
             val intent = Intent(context, EasyHttpRecordActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        @JvmStatic
+        fun intentEasyHttpCookies(context: Context) {
+            val intent = Intent(context, EasyHttpCookiesActivity::class.java)
             context.startActivity(intent)
         }
     }

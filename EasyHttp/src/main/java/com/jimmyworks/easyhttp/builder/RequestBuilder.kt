@@ -58,36 +58,36 @@ open class RequestBuilder {
             .cookieJar(EasyHttpCookieJar(context))
     }
 
-    fun tag(tag: String): RequestBuilder {
+    open fun tag(tag: String): RequestBuilder {
         this.requestBuilder.tag(tag)
         return this
     }
 
-    fun addHeader(key: String, value: String): RequestBuilder {
-        this.requestBuilder.addHeader(key, value)
+    open fun addHeader(key: String, value: String): RequestBuilder {
+        this.requestBuilder.header(key, value)
         return this
     }
 
-    fun headers(headersMap: Map<String, String>): RequestBuilder {
+    open fun headers(headersMap: Map<String, String>): RequestBuilder {
         for ((key, value) in headersMap) {
-            this.requestBuilder.addHeader(key, value)
+            this.requestBuilder.header(key, value)
         }
         return this
     }
 
-    fun addUrlParams(key: String, value: String): RequestBuilder {
+    open fun addUrlParams(key: String, value: String): RequestBuilder {
         this.urlParamsMap[key] = value
         return this
     }
 
-    fun urlParams(urlParamsMap: Map<String, String>): RequestBuilder {
+    open fun urlParams(urlParamsMap: Map<String, String>): RequestBuilder {
         for ((key, value) in urlParamsMap) {
             this.urlParamsMap[key] = value
         }
         return this
     }
 
-    fun cacheable(isCacheable: Boolean): RequestBuilder {
+    open fun cacheable(isCacheable: Boolean): RequestBuilder {
         if (isCacheable) {
             this.requestBuilder.cacheControl(CacheControl.Builder().build())
         } else {
@@ -96,22 +96,22 @@ open class RequestBuilder {
         return this
     }
 
-    fun saveRecord(isSaveRecord: Boolean): RequestBuilder {
+    open fun saveRecord(isSaveRecord: Boolean): RequestBuilder {
         this.isSaveRecord = isSaveRecord
         return this
     }
 
-    fun connectTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
+    open fun connectTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
         okHttpClientBuilder.connectTimeout(timeout, timeUnit)
         return this
     }
 
-    fun readTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
+    open fun readTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
         okHttpClientBuilder.readTimeout(timeout, timeUnit)
         return this
     }
 
-    fun writeTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
+    open fun writeTimeout(timeout: Long, timeUnit: TimeUnit): RequestBuilder {
         okHttpClientBuilder.writeTimeout(timeout, timeUnit)
         return this
     }

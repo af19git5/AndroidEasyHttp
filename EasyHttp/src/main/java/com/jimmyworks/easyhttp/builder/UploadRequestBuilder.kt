@@ -1,6 +1,8 @@
 package com.jimmyworks.easyhttp.builder
 
 import android.content.Context
+import android.net.Uri
+import android.provider.OpenableColumns
 import com.jimmyworks.easyhttp.entity.RequestInfo
 import com.jimmyworks.easyhttp.service.DoRequestService
 import com.jimmyworks.easyhttp.type.HttpMethod
@@ -11,6 +13,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 /**
  * 檔案上傳建構器
@@ -19,8 +22,9 @@ import java.io.File
  */
 open class UploadRequestBuilder : RequestBuilder {
 
-    private val multipartBodyBuilder = MultipartBody.Builder()
-    private val requestStringBuilder = StringBuilder("Form-data\n\n")
+    private val multipartBodyBuilder =
+        MultipartBody.Builder().setType("multipart/form-data".toMediaType())
+    private val requestStringBuilder = StringBuilder("--Form-data--\n")
 
     constructor(context: Context, url: String) : super(context, url, HttpMethod.POST)
 
@@ -30,11 +34,66 @@ open class UploadRequestBuilder : RequestBuilder {
         httpMethod
     )
 
+    override fun tag(tag: String): UploadRequestBuilder {
+        super.tag(tag)
+        return this
+    }
+
+    override fun addHeader(key: String, value: String): UploadRequestBuilder {
+        super.addHeader(key, value)
+        return this
+    }
+
+    override fun headers(headersMap: Map<String, String>): UploadRequestBuilder {
+        super.headers(headersMap)
+        return this
+    }
+
+    override fun addUrlParams(key: String, value: String): UploadRequestBuilder {
+        super.addUrlParams(key, value)
+        return this
+    }
+
+    override fun urlParams(urlParamsMap: Map<String, String>): UploadRequestBuilder {
+        super.urlParams(urlParamsMap)
+        return this
+    }
+
+    override fun cacheable(isCacheable: Boolean): UploadRequestBuilder {
+        super.cacheable(isCacheable)
+        return this
+    }
+
+    override fun saveRecord(isSaveRecord: Boolean): UploadRequestBuilder {
+        super.saveRecord(isSaveRecord)
+        return this
+    }
+
+    override fun connectTimeout(timeout: Long, timeUnit: TimeUnit): UploadRequestBuilder {
+        super.connectTimeout(timeout, timeUnit)
+        return this
+    }
+
+    override fun readTimeout(timeout: Long, timeUnit: TimeUnit): UploadRequestBuilder {
+        super.readTimeout(timeout, timeUnit)
+        return this
+    }
+
+    override fun writeTimeout(timeout: Long, timeUnit: TimeUnit): UploadRequestBuilder {
+        super.writeTimeout(timeout, timeUnit)
+        return this
+    }
+
+    fun contentType(contentType: String): UploadRequestBuilder {
+        multipartBodyBuilder.setType(contentType.toMediaType())
+        return this
+    }
+
     fun addMultipartParameter(key: String, value: String): UploadRequestBuilder {
         multipartBodyBuilder.addFormDataPart(key, value)
         requestStringBuilder
             .append(key)
-            .append(":")
+            .append(": ")
             .append(value)
             .append("\n")
         return this
@@ -48,7 +107,7 @@ open class UploadRequestBuilder : RequestBuilder {
         )
         requestStringBuilder
             .append(key)
-            .append(":FILE(")
+            .append(": FILE(")
             .append(fileName)
             .append(", ")
             .append(bytes.fileSizeText()).append(")\n")
@@ -64,10 +123,27 @@ open class UploadRequestBuilder : RequestBuilder {
 
         requestStringBuilder
             .append(key)
-            .append(":FILE(")
+            .append(": FILE(")
             .append(file.name)
             .append(", ")
             .append(file.fileSizeText()).append(")\n")
+        return this
+    }
+
+    fun addMultipartFile(key: String, uri: Uri): UploadRequestBuilder {
+        var fileName = ""
+        var bytes: ByteArray = byteArrayOf()
+
+        context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            cursor.moveToFirst()
+            fileName = cursor.getString(nameIndex)
+        }
+
+        context.contentResolver.openInputStream(uri)?.use { inputStream ->
+            bytes = inputStream.readBytes()
+        }
+        addMultipartFile(key, fileName, bytes)
         return this
     }
 

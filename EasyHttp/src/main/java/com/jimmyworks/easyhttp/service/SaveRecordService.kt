@@ -1,6 +1,7 @@
 package com.jimmyworks.easyhttp.service
 
 import android.content.Context
+import android.text.TextUtils
 import com.jimmyworks.easyhttp.EasyHttpConfig
 import com.jimmyworks.easyhttp.database.entity.HttpRecordHeaders
 import com.jimmyworks.easyhttp.database.entity.HttpRecordInfo
@@ -55,7 +56,21 @@ class SaveRecordService(
 
         val headerRecordList: MutableList<HttpRecordHeaders> = ArrayList()
         // request header
+        if (!TextUtils.isEmpty(requestInfo.contentType)) {
+            headerRecordList.add(
+                HttpRecordHeaders(
+                    null,
+                    null,
+                    false,
+                    "Content-Type",
+                    requestInfo.contentType!!
+                )
+            )
+        }
         for (header in requestInfo.headers) {
+            if (header.first.equals("Content-Type", true)) {
+                continue
+            }
             headerRecordList.add(
                 HttpRecordHeaders(
                     null,
@@ -100,7 +115,21 @@ class SaveRecordService(
 
         val headerRecordList: MutableList<HttpRecordHeaders> = ArrayList()
         // request header
+        if (!TextUtils.isEmpty(requestInfo.contentType)) {
+            headerRecordList.add(
+                HttpRecordHeaders(
+                    null,
+                    null,
+                    false,
+                    "Content-Type",
+                    requestInfo.contentType!!
+                )
+            )
+        }
         for (header in requestInfo.headers) {
+            if (header.first.equals("Content-Type", true)) {
+                continue
+            }
             headerRecordList.add(
                 HttpRecordHeaders(
                     null,

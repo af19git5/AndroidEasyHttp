@@ -6,14 +6,18 @@ import okio.Buffer
 
 class RequestInfo {
     var url: String
-    var contentType: String
+    var contentType: String?
     var headers: Headers
     var requestString: String?
     var request: Request
 
     constructor(request: Request) {
         this.url = request.url.toString()
-        this.contentType = request.body?.contentType().toString()
+        if (null == request.body) {
+            this.contentType = null
+        } else {
+            this.contentType = request.body!!.contentType().toString()
+        }
         this.headers = request.headers
         val buffer = Buffer()
         request.body?.writeTo(buffer)
@@ -23,7 +27,11 @@ class RequestInfo {
 
     constructor(request: Request, requestString: String) {
         this.url = request.url.toString()
-        this.contentType = request.body?.contentType().toString()
+        if (null == request.body) {
+            this.contentType = null
+        } else {
+            this.contentType = request.body!!.contentType().toString()
+        }
         this.headers = request.headers
         this.requestString = requestString
         this.request = request

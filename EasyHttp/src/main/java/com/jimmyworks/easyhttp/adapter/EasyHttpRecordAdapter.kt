@@ -1,14 +1,17 @@
 package com.jimmyworks.easyhttp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.jimmyworks.easyhttp.activity.EasyHttpRecordDetailActivity
 import com.jimmyworks.easyhttp.adapter.model.EasyHttpRecordItemViewModel
 import com.jimmyworks.easyhttp.database.entity.HttpRecordInfo
 import com.jimmyworks.easyhttp.databinding.EasyHttpRvItemRecordBinding
+import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.onSingleClick
 
 
 class EasyHttpRecordAdapter(private val context: Context) :
@@ -29,7 +32,13 @@ class EasyHttpRecordAdapter(private val context: Context) :
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         val itemBinding = (viewHolder as ItemViewHolder).itemBinding
-        itemBinding.itemViewModel = EasyHttpRecordItemViewModel(getItem(position))
+        val httpRecordInfo = getItem(position)
+        itemBinding.itemViewModel = EasyHttpRecordItemViewModel(httpRecordInfo)
+        itemBinding.clRecord.onSingleClick {
+            val intent = Intent(it.context, EasyHttpRecordDetailActivity::class.java)
+            intent.putExtra("recordId", httpRecordInfo.id)
+            context.startActivity(intent)
+        }
     }
 
     companion object {

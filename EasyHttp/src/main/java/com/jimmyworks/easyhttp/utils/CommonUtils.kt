@@ -1,13 +1,22 @@
 package com.jimmyworks.easyhttp.utils
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Handler
 import android.view.View
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.github.underscore.Json
+import com.github.underscore.U
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import java.io.File
+import java.util.*
 import kotlin.math.abs
 
+
 /**
- *
+ * 常用公用方法
  *
  * @author Jimmy Kang
  */
@@ -42,24 +51,47 @@ class CommonUtils {
         /** 最近一次點擊元件id  */
         private var mLastClickViewId = 0
 
-        /**
-         * 是否快速點擊
-         *
-         * @param v 點擊的元件
-         * @param intervalMillis 時間間隔
-         * @return true:是，false:不是
-         */
-        fun isFastDoubleClick(v: View, intervalMillis: Long): Boolean {
-            val viewId: Int = v.id
-            val time = System.currentTimeMillis()
-            val timeInterval: Long = abs(time - mLastClickTime)
-            return if (timeInterval < intervalMillis && viewId == mLastClickViewId) {
-                true
-            } else {
-                mLastClickTime = time
-                mLastClickViewId = viewId
-                false
+        fun View.onSingleClick(interval: Int = 500, onClickListener: View.OnClickListener) {
+            setOnClickListener {
+                val viewId: Int = it.id
+                val time = System.currentTimeMillis()
+                val timeInterval: Long = abs(time - mLastClickTime)
+                if (timeInterval >= interval || viewId != mLastClickViewId) {
+                    mLastClickTime = time
+                    mLastClickViewId = viewId
+                    onClickListener.onClick(it)
+                }
             }
         }
+
+        fun String.prettify(contentType: String?): String {
+            contentType ?: return this
+            return prettify(contentType.toMediaType())
+        }
+
+        fun String.prettify(mediaType: MediaType?): String {
+            mediaType ?: return this
+            return try {
+                when (mediaType.subtype.lowercase(Locale.ENGLISH)) {
+                    "json" -> {
+                        U.formatJson(this, Json.JsonStringBuilder.Step.FOUR_SPACES)
+                    }
+                    "xml" -> {
+                        U.formatXml(this)
+                    }
+                    else -> {
+                        this
+                    }
+                }
+            } catch (e: Exception) {
+                this
+            }
+        }
+
     }
+}
+
+@BindingAdapter("app:imageBitmap")
+fun imageBitmap(imageView: ImageView, bitmap: Bitmap?) {
+    imageView.setImageBitmap(bitmap)
 }

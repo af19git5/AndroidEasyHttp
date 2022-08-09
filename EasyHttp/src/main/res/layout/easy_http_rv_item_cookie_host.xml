@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="itemViewModel"
+			type="com.jimmyworks.easyhttp.adapter.model.EasyHttpCookieHostItemViewModel" />
+	</data>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/easyHttpColorBackground"
+		android:orientation="vertical"
+		tools:ignore="HardcodedText,UseAppTint">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp">
+
+			<TextView
+				android:id="@+id/tv_host"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{itemViewModel.host}"
+				android:textColor="@color/easyHttpColorText01"
+				android:textSize="@dimen/easy_http_ts_sp04"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/tv_count"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="10dp"
+				android:text="@{itemViewModel.count + ` cookies`}"
+				android:textColor="@color/easyHttpColorText02"
+				android:textSize="@dimen/easy_http_ts_sp02"
+				app:layout_constraintBottom_toBottomOf="@id/tv_host"
+				app:layout_constraintLeft_toRightOf="@id/tv_host" />
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/iv_clear"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:src="@drawable/easy_http_ic_delete"
+				app:layout_constraintBottom_toBottomOf="@id/tv_host"
+				app:layout_constraintRight_toRightOf="parent"
+				app:tint="@color/easyHttpColor01" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rv_cookies"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="15dp"
+			android:layout_marginEnd="15dp"
+			tools:itemCount="1"
+			tools:listitem="@layout/easy_http_rv_item_cookie" />
+
+		<View
+			android:id="@+id/view_line"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:background="@color/easyHttpColorLine" />
+
+	</LinearLayout>
+
+</layout>

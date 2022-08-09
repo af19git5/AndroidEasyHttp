@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="viewModel"
+			type="com.jimmyworks.easyhttp.fragment.model.EasyHttpRecordResponseViewModel" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/easyHttpColorBackground">
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/iv_file"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:src="@drawable/easy_http_ic_file"
+			android:visibility="@{!viewModel.haveHeaders &amp;&amp; !viewModel.haveBody ? View.VISIBLE : View.GONE}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:tint="@color/easyHttpColor03"
+			tools:ignore="ImageContrastCheck" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:text="@string/easy_http_response_empty"
+			android:textColor="@color/easyHttpColorText02"
+			android:textSize="@dimen/easy_http_ts_sp03"
+			android:visibility="@{!viewModel.haveHeaders &amp;&amp; !viewModel.haveBody ? View.VISIBLE : View.GONE}"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/iv_file"
+			tools:ignore="TextContrastCheck" />
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingStart="15dp"
+				android:paddingTop="10dp"
+				android:paddingEnd="15sp"
+				android:paddingBottom="10dp">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/easy_http_headers"
+					android:textColor="@color/easyHttpColorText01"
+					android:textSize="@dimen/easy_http_ts_sp04"
+					android:textStyle="bold"
+					android:visibility="@{viewModel.haveHeaders ? View.VISIBLE : View.GONE}" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:layout_marginTop="3dp"
+					android:lineSpacingMultiplier="1.2"
+					android:text="@{viewModel.headers}"
+					android:textColor="@color/easyHttpColorText01"
+					android:textIsSelectable="true"
+					android:textSize="@dimen/easy_http_ts_sp02"
+					android:visibility="@{viewModel.haveHeaders ? View.VISIBLE : View.GONE}"
+					tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:text="@string/easy_http_body"
+					android:textColor="@color/easyHttpColorText01"
+					android:textSize="@dimen/easy_http_ts_sp04"
+					android:textStyle="bold"
+					android:visibility="@{viewModel.haveBody ? View.VISIBLE : View.GONE}" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:layout_marginTop="3dp"
+					android:lineSpacingMultiplier="1.2"
+					android:text="@{viewModel.body}"
+					android:textColor="@color/easyHttpColorText01"
+					android:textIsSelectable="true"
+					android:textSize="@dimen/easy_http_ts_sp02"
+					android:visibility="@{viewModel.haveBody &amp;&amp; !viewModel.showImage ? View.VISIBLE : View.GONE}"
+					tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp"
+					android:scaleType="centerCrop"
+					android:visibility="@{viewModel.showImage ? View.VISIBLE : View.GONE}"
+					app:imageBitmap="@{viewModel.imageBody}" />
+
+			</LinearLayout>
+
+		</androidx.core.widget.NestedScrollView>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

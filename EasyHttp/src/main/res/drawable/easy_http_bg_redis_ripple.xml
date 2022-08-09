@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+	android:color="@color/easyHttpColorEffect">
+	<item>
+		<shape>
+			<corners android:radius="@dimen/easy_http_radius_dp01" />
+			<solid android:color="@color/easyHttpColorBackground" />
+		</shape>
+	</item>
+</ripple>

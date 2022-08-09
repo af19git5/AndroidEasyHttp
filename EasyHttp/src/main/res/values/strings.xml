@@ -3,11 +3,14 @@
 	<string name="easy_http_record_details">Record Details</string>
 	<string name="easy_http_no_record">No record</string>
 	<string name="easy_http_notice">Notice</string>
-	<string name="easy_http_clear_notice">Do you want to clear all records.</string>
+	<string name="easy_http_record_clear_notice">Do you want to clear all records.</string>
+	<string name="easy_http_cookies_clear_notice">Do you want to clear all cookies.</string>
+	<string name="easy_http_cookies_host_clear_notice">Do you want to clear all cookies by hosts</string>
+	<string name="easy_http_cookies_name_clear_notice">Do you want to clear cookie</string>
 	<string name="easy_http_yes">yes</string>
 	<string name="easy_http_no">no</string>
 	<string name="easy_http_search_url_hint">Search url</string>
-	<string name="easy_http_general">General</string>
+	<string name="easy_http_info">Info</string>
 	<string name="easy_http_request">Request</string>
 	<string name="easy_http_response">Response</string>
 	<string name="easy_http_url">Url</string>
@@ -19,6 +22,8 @@
 	<string name="easy_http_headers">Headers</string>
 	<string name="easy_http_cookies">Cookies</string>
 	<string name="easy_http_body">Body</string>
-	<string name="easy_http_response_empty">Response Empty</string>
+	<string name="easy_http_response_empty">Response is empty.</string>
 	<string name="easy_http_response_body_empty">Response body is empty.</string>
+	<string name="easy_http_request_empty">Request is empty.</string>
+	<string name="easy_http_cookies_empty">Cookie is empty.</string>
 </resources>

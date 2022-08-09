@@ -1,6 +1,8 @@
 package com.jimmyworks.easyhttp.adapter.model
 
+import android.graphics.PorterDuff
 import android.text.TextUtils
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -22,8 +24,6 @@ class EasyHttpRecordItemViewModel(httpRecordInfo: HttpRecordInfo) : Serializable
 
     val sendTime: String
 
-    val isError: Boolean
-
     val httpRecordInfo: HttpRecordInfo
 
     init {
@@ -32,11 +32,6 @@ class EasyHttpRecordItemViewModel(httpRecordInfo: HttpRecordInfo) : Serializable
         method = httpRecordInfo.method.code
         url = httpRecordInfo.url
         sendTime = httpRecordInfo.sendTime.toString("yyyy-MM-dd HH:mm:ss.SSS")
-        isError = if (null != httpRecordInfo.statusCode) {
-            HttpStatus.toHttpStatus(httpRecordInfo.statusCode!!).series != Series.SUCCESSFUL
-        } else {
-            false
-        }
     }
 }
 
@@ -71,4 +66,48 @@ fun setHttpStatus(textView: TextView, httpRecordInfo: HttpRecordInfo) {
     }
     textView.text = status
     textView.setTextColor(ContextCompat.getColor(textView.context, statusColor))
+}
+
+@BindingAdapter("setHttpStatus")
+fun setHttpStatus(imageView: ImageView, httpRecordInfo: HttpRecordInfo) {
+    var httpStatus: HttpStatus? = null
+    if (null != httpRecordInfo.statusCode) {
+        httpStatus = HttpStatus.toHttpStatus(httpRecordInfo.statusCode!!)
+    }
+    val statusIcon: Int
+    val statusColor: Int
+    if (null != httpStatus) {
+        when (httpStatus.series) {
+            Series.SUCCESSFUL -> {
+                statusIcon = R.drawable.easy_http_ic_check
+                statusColor = R.color.easyHttpStatusColorSuccess
+            }
+            Series.INFORMATIONAL, Series.REDIRECTION -> {
+                statusIcon = R.drawable.easy_http_ic_warring
+                statusColor = R.color.easyHttpStatusColorWarring
+            }
+            else -> {
+                statusIcon = R.drawable.easy_http_ic_error
+                statusColor = R.color.easyHttpStatusColorError
+            }
+        }
+    } else {
+        if (null != httpRecordInfo.receiveTime) {
+            statusIcon = R.drawable.easy_http_ic_error
+            statusColor = R.color.easyHttpStatusColorError
+        } else {
+            if (TextUtils.isEmpty(httpRecordInfo.errorMessage)) {
+                statusIcon = R.drawable.easy_http_ic_warring
+                statusColor = R.color.easyHttpStatusColorWarring
+            } else {
+                statusIcon = R.drawable.easy_http_ic_error
+                statusColor = R.color.easyHttpStatusColorError
+            }
+        }
+    }
+    imageView.setImageResource(statusIcon)
+    imageView.setColorFilter(
+        ContextCompat.getColor(imageView.context, statusColor),
+        PorterDuff.Mode.MULTIPLY
+    )
 }

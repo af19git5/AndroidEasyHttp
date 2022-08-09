@@ -155,12 +155,12 @@ class FileUtils {
         fun File.readText(): String {
             if (!this.exists() || this.isDirectory) return ""
             val stringBuilder = StringBuilder()
-            BufferedReader(FileReader(this)).use { bufferedReader ->
-                {
-                    var str = bufferedReader.readLine()
-                    while (str != null) {
-                        stringBuilder.append(str)
-                        str = bufferedReader.readLine()
+            this.useLines {
+                val list = it.toList()
+                for ((i, text) in list.withIndex()) {
+                    stringBuilder.append(text)
+                    if (i != list.size - 1) {
+                        stringBuilder.append("\n")
                     }
                 }
             }
@@ -184,12 +184,12 @@ class FileUtils {
 
             val decimalFormat = DecimalFormat("###.##")
 
-            cntSize = if (sizeGb > 0) {
-                decimalFormat.format(sizeGb) + "GB"
-            } else if (sizeMb > 0) {
-                decimalFormat.format(sizeMb) + "MB"
+            cntSize = if (sizeGb >= 1) {
+                decimalFormat.format(sizeGb) + " GB"
+            } else if (sizeMb >= 1) {
+                decimalFormat.format(sizeMb) + " MB"
             } else {
-                decimalFormat.format(sizeKb) + "KB"
+                decimalFormat.format(sizeKb) + " KB"
             }
 
             return cntSize

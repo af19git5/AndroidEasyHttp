@@ -7,6 +7,14 @@
 			android:name=".activity.EasyHttpRecordActivity"
 			android:exported="true"
 			android:theme="@style/EasyHttpTheme" />
+		<activity
+			android:name=".activity.EasyHttpRecordDetailActivity"
+			android:exported="true"
+			android:theme="@style/EasyHttpTheme" />
+		<activity
+			android:name=".activity.EasyHttpCookiesActivity"
+			android:exported="true"
+			android:theme="@style/EasyHttpTheme" />
 	</application>
 
 </manifest>
