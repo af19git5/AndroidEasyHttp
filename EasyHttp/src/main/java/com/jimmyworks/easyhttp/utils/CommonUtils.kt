@@ -51,7 +51,7 @@ class CommonUtils {
         /** 最近一次點擊元件id  */
         private var mLastClickViewId = 0
 
-        fun View.onSingleClick(interval: Int = 500, onClickListener: View.OnClickListener) {
+        fun View.setOnSingleClick(interval: Int = 500, onClickListener: View.OnClickListener) {
             setOnClickListener {
                 val viewId: Int = it.id
                 val time = System.currentTimeMillis()

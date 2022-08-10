@@ -17,7 +17,7 @@ import com.jimmyworks.easyhttp.adapter.model.EasyHttpCookieHostItemViewModel
 import com.jimmyworks.easyhttp.database.dto.CookieHostDTO
 import com.jimmyworks.easyhttp.database.repository.HttpCookiesRepository
 import com.jimmyworks.easyhttp.databinding.EasyHttpRvItemCookieHostBinding
-import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.onSingleClick
+import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.setOnSingleClick
 
 
 class EasyHttpCookieHostAdapter(private val activity: AppCompatActivity) :
@@ -40,7 +40,7 @@ class EasyHttpCookieHostAdapter(private val activity: AppCompatActivity) :
         val itemBinding = (viewHolder as ItemViewHolder).itemBinding
         val data = getItem(position)
         itemBinding.itemViewModel = EasyHttpCookieHostItemViewModel(data)
-        itemBinding.ivClear.onSingleClick {
+        itemBinding.ivClear.setOnSingleClick {
             AlertDialog.Builder(activity, R.style.EasyHttpAlertDialogTheme)
                 .setTitle(R.string.easy_http_notice)
                 .setMessage(

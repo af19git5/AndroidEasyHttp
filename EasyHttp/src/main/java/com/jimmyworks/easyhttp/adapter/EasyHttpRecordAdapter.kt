@@ -11,7 +11,7 @@ import com.jimmyworks.easyhttp.activity.EasyHttpRecordDetailActivity
 import com.jimmyworks.easyhttp.adapter.model.EasyHttpRecordItemViewModel
 import com.jimmyworks.easyhttp.database.entity.HttpRecordInfo
 import com.jimmyworks.easyhttp.databinding.EasyHttpRvItemRecordBinding
-import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.onSingleClick
+import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.setOnSingleClick
 
 
 class EasyHttpRecordAdapter(private val context: Context) :
@@ -34,7 +34,7 @@ class EasyHttpRecordAdapter(private val context: Context) :
         val itemBinding = (viewHolder as ItemViewHolder).itemBinding
         val httpRecordInfo = getItem(position)
         itemBinding.itemViewModel = EasyHttpRecordItemViewModel(httpRecordInfo)
-        itemBinding.clRecord.onSingleClick {
+        itemBinding.clRecord.setOnSingleClick {
             val intent = Intent(it.context, EasyHttpRecordDetailActivity::class.java)
             intent.putExtra("recordId", httpRecordInfo.id)
             context.startActivity(intent)

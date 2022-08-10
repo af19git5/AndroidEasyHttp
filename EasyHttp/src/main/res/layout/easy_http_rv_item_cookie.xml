@@ -15,7 +15,7 @@
 	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="@drawable/easy_http_bg_redis_ripple"
+		android:background="@drawable/easy_http_bg_cookie"
 		android:backgroundTint="@color/easyHttpColor01"
 		android:gravity="center"
 		android:orientation="horizontal"

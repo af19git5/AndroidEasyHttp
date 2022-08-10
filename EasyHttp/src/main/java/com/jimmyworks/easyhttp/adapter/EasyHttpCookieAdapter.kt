@@ -1,8 +1,13 @@
 package com.jimmyworks.easyhttp.adapter
 
 import android.content.Context
+import android.graphics.Typeface
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,7 +17,8 @@ import com.jimmyworks.easyhttp.R
 import com.jimmyworks.easyhttp.adapter.model.EasyHttpCookieItemViewModel
 import com.jimmyworks.easyhttp.database.entity.HttpCookies
 import com.jimmyworks.easyhttp.databinding.EasyHttpRvItemCookieBinding
-import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.onSingleClick
+import com.jimmyworks.easyhttp.utils.CommonUtils.Companion.setOnSingleClick
+import com.jimmyworks.easyhttp.utils.DateUtils.Companion.toString
 
 
 class EasyHttpCookieAdapter(private val context: Context) :
@@ -35,7 +41,7 @@ class EasyHttpCookieAdapter(private val context: Context) :
         val itemBinding = (viewHolder as ItemViewHolder).itemBinding
         val data = getItem(position)
         itemBinding.itemViewModel = EasyHttpCookieItemViewModel(data)
-        itemBinding.ivClear.onSingleClick {
+        itemBinding.ivClear.setOnSingleClick {
             AlertDialog.Builder(context, R.style.EasyHttpAlertDialogTheme)
                 .setTitle(R.string.easy_http_notice)
                 .setMessage(
@@ -47,6 +53,38 @@ class EasyHttpCookieAdapter(private val context: Context) :
                 }
                 .setNegativeButton(R.string.easy_http_no) { _, _ -> }
                 .show()
+        }
+        itemBinding.root.setOnSingleClick {
+            val builder = SpannableStringBuilder()
+                .append("Host: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.host)
+                .append("\n")
+                .append("Value: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.cookieValue)
+                .append("\n")
+                .append("Expires: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.expires.toString("yyyy/MM/dd HH:mm:ss"))
+                .append("\n")
+                .append("Domain: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.domain)
+                .append("\n")
+                .append("Path: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.path)
+                .append("\n")
+                .append("Secure: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.secure.toString())
+                .append("\n")
+                .append("HttpOnly: ", StyleSpan(Typeface.BOLD), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                .append(data.httpOnly.toString())
+
+            val alertDialog = AlertDialog.Builder(context, R.style.EasyHttpAlertDialogTheme)
+                .setTitle(data.cookieName)
+                .setMessage(builder)
+                .setPositiveButton(R.string.easy_http_yes) { _, _ -> }
+                .show()
+
+            val dialogTextView: TextView = alertDialog.findViewById(android.R.id.message)!!
+            dialogTextView.setLineSpacing(0f, 1.2f)
         }
     }
 
