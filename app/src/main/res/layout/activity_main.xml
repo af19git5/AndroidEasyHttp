@@ -148,6 +148,44 @@
 					android:layout_marginEnd="10dp"
 					android:background="@color/colorLine" />
 
+				<LinearLayout
+					android:id="@+id/ll_about"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_ripple"
+					android:gravity="center_vertical"
+					android:onClick="onClick"
+					android:orientation="horizontal"
+					android:paddingStart="20dp"
+					android:paddingTop="10dp"
+					android:paddingEnd="20dp"
+					android:paddingBottom="10dp"
+					tools:ignore="UselessParent">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:src="@drawable/ic_info"
+						app:tint="@color/colorMain01" />
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="10dp"
+						android:text="@string/about"
+						android:textColor="@color/colorText01"
+						android:textSize="@dimen/ts_sp04"
+						tools:ignore="TextContrastCheck" />
+
+				</LinearLayout>
+
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginStart="10dp"
+					android:layout_marginEnd="10dp"
+					android:background="@color/colorLine" />
+
 			</LinearLayout>
 
 		</androidx.core.widget.NestedScrollView>

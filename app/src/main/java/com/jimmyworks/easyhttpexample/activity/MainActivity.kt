@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.llRecord.id -> {
                 EasyHttp.intentEasyHttpRecord(this)
             }
+            binding.llAbout.id -> {
+
+            }
         }
     }
 }

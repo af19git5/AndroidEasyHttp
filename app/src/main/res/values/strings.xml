@@ -7,4 +7,5 @@
 	<string name="request_url_hint">Request Url</string>
 	<string name="headers">Headers</string>
 	<string name="body">Body</string>
+	<string name="about">About</string>
 </resources>
