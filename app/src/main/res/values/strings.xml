@@ -1,4 +1,10 @@
 <resources>
 	<string name="app_name">EasyHttp</string>
 	<string name="example_title">Easy Http Example</string>
+	<string name="demo_http_request">Demo Http Request</string>
+	<string name="demo_http_upload">Demo Http Upload</string>
+	<string name="http_record">Http Record</string>
+	<string name="request_url_hint">Request Url</string>
+	<string name="headers">Headers</string>
+	<string name="body">Body</string>
 </resources>

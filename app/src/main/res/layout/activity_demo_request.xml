@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/colorBackground"
+		tools:context=".activity.MainActivity">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/cl_topBar"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:background="@color/colorMain01"
+			android:elevation="2dp"
+			android:paddingStart="15dp"
+			android:paddingEnd="0dp"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<TextView
+				android:id="@+id/tv_title"
+				android:layout_width="0dp"
+				android:layout_height="50dp"
+				android:gravity="center_vertical"
+				android:singleLine="true"
+				android:text="@string/demo_http_request"
+				android:textColor="@color/colorBackground"
+				android:textSize="@dimen/easy_http_ts_sp05"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/iv_close"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/iv_close"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_weight="3"
+				android:onClick="onClick"
+				android:padding="10dp"
+				android:src="@drawable/easy_http_ic_close"
+				android:tint="@color/colorBackground"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="SpeakableTextPresentCheck" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:clipToPadding="false"
+			android:paddingBottom="100dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/cl_topBar">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingStart="15dp"
+				android:paddingTop="5dp"
+				android:paddingEnd="15dp"
+				android:paddingBottom="10dp">
+
+				<TextView
+					android:id="@+id/tv_method"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_radius_ripple"
+					android:paddingStart="10dp"
+					android:paddingTop="5dp"
+					android:paddingEnd="10dp"
+					android:paddingBottom="5dp"
+					android:text="POST"
+					android:textColor="@color/colorBackground"
+					android:textSize="@dimen/ts_sp02"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toBottomOf="@id/et_url"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="@id/et_url" />
+
+				<EditText
+					android:id="@+id/et_url"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="5dp"
+					android:backgroundTint="@color/colorLine"
+					android:hint="@string/request_url_hint"
+					android:importantForAutofill="no"
+					android:inputType="textUri"
+					android:lines="1"
+					android:textColor="@color/colorText01"
+					android:textColorHint="@color/colorText03"
+					android:textSize="@dimen/ts_sp02"
+					app:layout_constraintLeft_toRightOf="@id/tv_method"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
+
+				<TextView
+					android:id="@+id/tv_headers"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					android:text="@string/headers"
+					android:textColor="@color/colorText01"
+					android:textSize="@dimen/ts_sp04"
+					android:textStyle="bold"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/et_url" />
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id="@+id/iv_addHeaders"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:src="@drawable/ic_add"
+					app:layout_constraintBottom_toBottomOf="@id/tv_headers"
+					app:layout_constraintRight_toRightOf="parent"
+					app:tint="@color/colorMain01" />
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/rv_headers"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					app:layout_constraintTop_toBottomOf="@id/tv_headers"
+					tools:itemCount="1"
+					tools:listitem="@layout/rv_item_headers" />
+
+				<TextView
+					android:id="@+id/tv_body"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					android:text="@string/body"
+					android:textColor="@color/colorText01"
+					android:textSize="@dimen/ts_sp04"
+					android:textStyle="bold"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/rv_headers" />
+
+				<EditText
+					android:id="@+id/et_body"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:background="@drawable/bg_radius_ripple"
+					android:backgroundTint="@color/colorText04"
+					android:gravity="start"
+					android:importantForAutofill="no"
+					android:inputType="textMultiLine"
+					android:minHeight="150dp"
+					android:paddingStart="8dp"
+					android:paddingTop="5dp"
+					android:paddingEnd="8dp"
+					android:paddingBottom="5dp"
+					android:textColor="@color/colorText01"
+					android:textColorHint="@color/colorText03"
+					android:textSize="@dimen/ts_sp02"
+					app:layout_constraintTop_toBottomOf="@id/tv_body"
+					tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck"
+					tools:layout_editor_absoluteX="25dp" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.core.widget.NestedScrollView>
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/fab_send"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="20dp"
+			android:onClick="onClick"
+			android:src="@drawable/ic_send"
+			app:backgroundTint="@color/colorMain01"
+			app:elevation="2dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:tint="@color/colorBackground"
+			tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

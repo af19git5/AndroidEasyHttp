@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.github.underscore.Json
 import com.github.underscore.U
+import com.github.underscore.Xml
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import java.io.File
@@ -77,7 +78,7 @@ class CommonUtils {
                         U.formatJson(this, Json.JsonStringBuilder.Step.FOUR_SPACES)
                     }
                     "xml" -> {
-                        U.formatXml(this)
+                        U.formatXml(this, Xml.XmlStringBuilder.Step.FOUR_SPACES)
                     }
                     else -> {
                         this

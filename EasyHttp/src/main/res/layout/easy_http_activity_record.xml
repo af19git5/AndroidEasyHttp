@@ -101,6 +101,7 @@
 				android:textColor="@color/easyHttpColorText01"
 				android:textColorHint="@color/easyHttpColorText03"
 				android:textSize="@dimen/easy_http_ts_sp02"
+				android:lines="1"
 				tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
 
 		</LinearLayout>

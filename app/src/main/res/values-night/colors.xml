@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!--  主顏色色系  -->
-	<color name="colorMain01">#2699FB</color>
-	<color name="colorMain02">#7FC4FD</color>
-	<color name="colorMain03">#BCE0FD</color>
-	<color name="colorMain04">#F1F9FF</color>
-	<color name="colorMain05">#FFFFFF</color>
+	<color name="colorMain01">#FFFFFF</color>
+	<color name="colorMain02">#B5B5B5</color>
+	<color name="colorMain03">#838383</color>
+	<color name="colorMain04">#636363</color>
+	<color name="colorMain05">#232323</color>
 	<color name="colorMain06">#00D30B</color>
 	<color name="colorMain07">#FFD706</color>
 	<color name="colorMain08">#D80000</color>

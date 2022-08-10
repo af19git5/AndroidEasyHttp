@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<!--  主顏色色系  -->
 	<color name="easyHttpColor01">#FFFFFF</color>
 	<color name="easyHttpColor02">#B5B5B5</color>
@@ -16,6 +15,7 @@
 	<color name="easyHttpColorText01">@color/easyHttpColor01</color>
 	<color name="easyHttpColorText02">@color/easyHttpColor02</color>
 	<color name="easyHttpColorText03">@color/easyHttpColor03</color>
+	<color name="easyHttpColorText04">@color/easyHttpColor04</color>
 
 	<!--  http狀態色系  -->
 	<color name="easyHttpStatusColorSuccess">@color/easyHttpColor06</color>
