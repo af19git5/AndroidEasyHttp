@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingStart="30dp"
+		android:paddingTop="20dp"
+		android:paddingEnd="30dp">
+
+		<TextView
+			android:id="@+id/tv_key"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/key"
+			android:textColor="@color/colorText01"
+			android:textSize="@dimen/ts_sp03"
+			android:textStyle="bold"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/et_key"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:backgroundTint="@color/colorLine"
+			android:imeOptions="flagNoExtractUi"
+			android:importantForAutofill="no"
+			android:inputType="textUri"
+			android:lines="1"
+			android:textColor="@color/colorText01"
+			android:textColorHint="@color/colorText03"
+			android:textSize="@dimen/ts_sp02"
+			app:layout_constraintTop_toBottomOf="@id/tv_key"
+			tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
+
+		<TextView
+			android:id="@+id/tv_value"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/value"
+			android:textColor="@color/colorText01"
+			android:textSize="@dimen/ts_sp03"
+			android:textStyle="bold"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/et_key" />
+
+		<EditText
+			android:id="@+id/et_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:backgroundTint="@color/colorLine"
+			android:imeOptions="flagNoExtractUi"
+			android:importantForAutofill="no"
+			android:inputType="textUri"
+			android:lines="1"
+			android:textColor="@color/colorText01"
+			android:textColorHint="@color/colorText03"
+			android:textSize="@dimen/ts_sp02"
+			app:layout_constraintTop_toBottomOf="@id/tv_value"
+			tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

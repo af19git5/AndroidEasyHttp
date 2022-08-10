@@ -4,8 +4,9 @@
 	xmlns:tools="http://schemas.android.com/tools">
 
 	<data>
-		<import type="android.view.View" />
-
+		<variable
+			name="itemViewModel"
+			type="com.jimmyworks.easyhttpexample.adapter.model.HeadersViewModel" />
 	</data>
 
 	<LinearLayout
@@ -26,7 +27,7 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Content-Type"
+			android:text="@{itemViewModel.key}"
 			android:textColor="@color/colorBackground"
 			tools:ignore="TextContrastCheck" />
 

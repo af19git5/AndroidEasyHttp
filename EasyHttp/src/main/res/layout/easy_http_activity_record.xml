@@ -95,13 +95,14 @@
 				android:layout_marginStart="3dp"
 				android:backgroundTint="@color/easyHttpColorLine"
 				android:hint="@string/easy_http_search_url_hint"
+				android:imeOptions="flagNoExtractUi"
 				android:importantForAutofill="no"
 				android:inputType="text"
+				android:lines="1"
 				android:text="@={viewModel.searchText}"
 				android:textColor="@color/easyHttpColorText01"
 				android:textColorHint="@color/easyHttpColorText03"
 				android:textSize="@dimen/easy_http_ts_sp02"
-				android:lines="1"
 				tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
 
 		</LinearLayout>

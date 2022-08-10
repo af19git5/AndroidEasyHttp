@@ -7,4 +7,11 @@
 		<item name="colorSecondary">@color/colorMain01</item>
 		<item name="android:statusBarColor">@color/colorMain09</item>
 	</style>
+
+	<style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+		<item name="android:colorAccent">@color/easyHttpColor01</item>
+		<item name="android:textColor">@color/easyHttpColor01</item>
+		<item name="android:textColorPrimary">@color/easyHttpColor01</item>
+		<item name="android:background">@color/easyHttpColorBackground</item>
+	</style>
 </resources>

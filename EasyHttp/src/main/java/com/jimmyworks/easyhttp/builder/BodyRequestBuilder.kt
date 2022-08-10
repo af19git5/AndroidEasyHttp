@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
  *
  * @author Jimmy Kang
  */
-class PostRequestBuilder : RequestBuilder {
+class BodyRequestBuilder : RequestBuilder {
 
     private var contentType = "application/json"
     private var requestBodyString = ""
@@ -32,81 +32,81 @@ class PostRequestBuilder : RequestBuilder {
         httpMethod
     )
 
-    override fun tag(tag: String): PostRequestBuilder {
+    override fun tag(tag: String): BodyRequestBuilder {
         super.tag(tag)
         return this
     }
 
-    override fun addHeader(key: String, value: String): PostRequestBuilder {
+    override fun addHeader(key: String, value: String): BodyRequestBuilder {
         super.addHeader(key, value)
         return this
     }
 
-    override fun headers(headersMap: Map<String, String>): PostRequestBuilder {
+    override fun headers(headersMap: Map<String, String>): BodyRequestBuilder {
         super.headers(headersMap)
         return this
     }
 
-    override fun addUrlParams(key: String, value: String): PostRequestBuilder {
+    override fun addUrlParams(key: String, value: String): BodyRequestBuilder {
         super.addUrlParams(key, value)
         return this
     }
 
-    override fun urlParams(urlParamsMap: Map<String, String>): PostRequestBuilder {
+    override fun urlParams(urlParamsMap: Map<String, String>): BodyRequestBuilder {
         super.urlParams(urlParamsMap)
         return this
     }
 
-    override fun cacheable(isCacheable: Boolean): PostRequestBuilder {
+    override fun cacheable(isCacheable: Boolean): BodyRequestBuilder {
         super.cacheable(isCacheable)
         return this
     }
 
-    override fun saveRecord(isSaveRecord: Boolean): PostRequestBuilder {
+    override fun saveRecord(isSaveRecord: Boolean): BodyRequestBuilder {
         super.saveRecord(isSaveRecord)
         return this
     }
 
-    override fun connectTimeout(timeout: Long, timeUnit: TimeUnit): PostRequestBuilder {
+    override fun connectTimeout(timeout: Long, timeUnit: TimeUnit): BodyRequestBuilder {
         super.connectTimeout(timeout, timeUnit)
         return this
     }
 
-    override fun readTimeout(timeout: Long, timeUnit: TimeUnit): PostRequestBuilder {
+    override fun readTimeout(timeout: Long, timeUnit: TimeUnit): BodyRequestBuilder {
         super.readTimeout(timeout, timeUnit)
         return this
     }
 
-    override fun writeTimeout(timeout: Long, timeUnit: TimeUnit): PostRequestBuilder {
+    override fun writeTimeout(timeout: Long, timeUnit: TimeUnit): BodyRequestBuilder {
         super.writeTimeout(timeout, timeUnit)
         return this
     }
 
-    fun stringBody(string: String): PostRequestBuilder {
+    fun stringBody(string: String): BodyRequestBuilder {
         contentType = "text/plain"
         this.requestBodyString = string
         return this
     }
 
-    fun stringBody(contentType: String, string: String): PostRequestBuilder {
+    fun stringBody(contentType: String, string: String): BodyRequestBuilder {
         this.contentType = contentType
         this.requestBodyString = string
         return this
     }
 
-    fun jsonBody(obj: Any): PostRequestBuilder {
+    fun jsonBody(obj: Any): BodyRequestBuilder {
         contentType = "application/json"
         this.requestBodyString = JsonUtils.toJson(obj)
         return this
     }
 
-    fun jsonBody(contentType: String, obj: Any): PostRequestBuilder {
+    fun jsonBody(contentType: String, obj: Any): BodyRequestBuilder {
         this.contentType = contentType
         this.requestBodyString = JsonUtils.toJson(obj)
         return this
     }
 
-    fun formBody(formMap: Map<String, String>): PostRequestBuilder {
+    fun formBody(formMap: Map<String, String>): BodyRequestBuilder {
         val builder = FormBody.Builder(Charset.defaultCharset())
         for ((key, value) in formMap) {
             builder.add(key, value)
@@ -115,12 +115,12 @@ class PostRequestBuilder : RequestBuilder {
         return this
     }
 
-    fun formBody(formBody: FormBody): PostRequestBuilder {
+    fun formBody(formBody: FormBody): BodyRequestBuilder {
         this.requestBody = formBody
         return this
     }
 
-    fun requestBody(requestBody: RequestBody): PostRequestBuilder {
+    fun requestBody(requestBody: RequestBody): BodyRequestBuilder {
         this.requestBody = requestBody
         return this
     }
@@ -138,7 +138,7 @@ class PostRequestBuilder : RequestBuilder {
 
         requestBuilder.url(buildUrl())
 
-        if (null != requestBody) {
+        if (null != requestBody || !httpMethod.haveBody) {
             return RequestInfo(
                 requestBuilder
                     .method(httpMethod.code, requestBody)

@@ -8,25 +8,19 @@ import com.jimmyworks.easyhttp.exception.TypeNotFoundException
  *
  * @author Jimmy Kang
  */
-enum class HttpMethod(var code: String) {
+enum class HttpMethod(val code: String, val haveBody: Boolean) {
 
-    GET("GET"),
+    GET("GET", false),
 
-    HEAD("HEAD"),
+    HEAD("HEAD", false),
 
-    POST("POST"),
+    POST("POST", true),
 
-    PUT("PUT"),
+    PUT("PUT", true),
 
-    DELETE("DELETE"),
+    DELETE("DELETE", true),
 
-    CONNECT("CONNECT"),
-
-    OPTIONS("OPTIONS"),
-
-    TRACE("TRACE"),
-
-    PATCH("PATCH");
+    PATCH("PATCH", true);
 
     companion object {
         @TypeConverter

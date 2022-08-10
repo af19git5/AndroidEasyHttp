@@ -8,4 +8,22 @@
 	<string name="headers">Headers</string>
 	<string name="body">Body</string>
 	<string name="about">About</string>
+	<string name="key">Key</string>
+	<string name="value">Value</string>
+	<string name="header_clear_notice">Do you want to clear header</string>
+	<string name="key_empty_hint">Key cannot be null</string>
+	<string name="value_empty_hint">Value cannot be null</string>
+	<string name="notice">Notice</string>
+	<string name="yes">yes</string>
+	<string name="no">no</string>
+	<string name="get">GET</string>
+	<string name="head">HEAD</string>
+	<string name="post">POST</string>
+	<string name="put">PUT</string>
+	<string name="delete">DELETE</string>
+	<string name="patch">PATCH</string>
+	<string name="wait_notice">Please wait…</string>
+	<string name="response">Response</string>
+	<string name="success">Success</string>
+	<string name="error">Error</string>
 </resources>

@@ -22,10 +22,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             binding.llRequest.id -> {
-                startActivity(Intent(this, DemoRequestActivity::class.java))
+                val intent = Intent(this, DemoRequestActivity::class.java)
+                intent.putExtra("isUpload", false)
+                startActivity(intent)
             }
             binding.llUpload.id -> {
-
+                val intent = Intent(this, DemoRequestActivity::class.java)
+                intent.putExtra("isUpload", true)
+                startActivity(intent)
             }
             binding.llRecord.id -> {
                 EasyHttp.intentEasyHttpRecord(this)

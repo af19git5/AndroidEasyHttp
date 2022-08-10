@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.jimmyworks.easyhttp.activity.EasyHttpCookiesActivity
 import com.jimmyworks.easyhttp.activity.EasyHttpRecordActivity
-import com.jimmyworks.easyhttp.builder.PostRequestBuilder
+import com.jimmyworks.easyhttp.builder.BodyRequestBuilder
 import com.jimmyworks.easyhttp.builder.RequestBuilder
 import com.jimmyworks.easyhttp.builder.UploadRequestBuilder
 import com.jimmyworks.easyhttp.database.repository.HttpCookiesRepository
@@ -26,28 +26,28 @@ class EasyHttp {
         }
 
         @JvmStatic
-        fun post(context: Context, url: String): PostRequestBuilder {
-            return PostRequestBuilder(context, url)
+        fun post(context: Context, url: String): BodyRequestBuilder {
+            return BodyRequestBuilder(context, url)
         }
 
         @JvmStatic
-        fun put(context: Context, url: String): PostRequestBuilder {
-            return PostRequestBuilder(context, url, HttpMethod.PUT)
+        fun put(context: Context, url: String): BodyRequestBuilder {
+            return BodyRequestBuilder(context, url, HttpMethod.PUT)
         }
 
         @JvmStatic
-        fun delete(context: Context, url: String): PostRequestBuilder {
-            return PostRequestBuilder(context, url, HttpMethod.DELETE)
+        fun delete(context: Context, url: String): BodyRequestBuilder {
+            return BodyRequestBuilder(context, url, HttpMethod.DELETE)
         }
 
         @JvmStatic
-        fun patch(context: Context, url: String): PostRequestBuilder {
-            return PostRequestBuilder(context, url, HttpMethod.PATCH)
+        fun patch(context: Context, url: String): BodyRequestBuilder {
+            return BodyRequestBuilder(context, url, HttpMethod.PATCH)
         }
 
         @JvmStatic
-        fun method(context: Context, method: HttpMethod, url: String): PostRequestBuilder {
-            return PostRequestBuilder(context, url, method)
+        fun method(context: Context, method: HttpMethod, url: String): BodyRequestBuilder {
+            return BodyRequestBuilder(context, url, method)
         }
 
         @JvmStatic
