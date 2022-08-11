@@ -11,6 +11,7 @@
 	<string name="key">Key</string>
 	<string name="value">Value</string>
 	<string name="header_clear_notice">Do you want to clear header</string>
+	<string name="form_clear_notice">Do you want to clear form</string>
 	<string name="key_empty_hint">Key cannot be null</string>
 	<string name="value_empty_hint">Value cannot be null</string>
 	<string name="notice">Notice</string>
@@ -26,4 +27,7 @@
 	<string name="response">Response</string>
 	<string name="success">Success</string>
 	<string name="error">Error</string>
+	<string name="form_body">Form Body</string>
+	<string name="file">File</string>
+	<string name="text">Text</string>
 </resources>

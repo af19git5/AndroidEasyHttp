@@ -3,6 +3,7 @@ package com.jimmyworks.easyhttpexample.activity.model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jimmyworks.easyhttp.type.HttpMethod
+import com.jimmyworks.easyhttpexample.data.Form
 import com.jimmyworks.easyhttpexample.data.Header
 
 
@@ -12,12 +13,15 @@ class DemoRequestViewModel(isUpload: Boolean) : ViewModel() {
     var body = ""
 
     val isUpload = MutableLiveData(isUpload)
+    val title = MutableLiveData("")
     val method: MutableLiveData<HttpMethod>
     val headerList: MutableList<Header>
+    val formList: MutableList<Form>
     val response = MutableLiveData("")
 
     init {
         headerList = ArrayList()
+        formList = ArrayList()
 
         if (isUpload) {
             url = ""

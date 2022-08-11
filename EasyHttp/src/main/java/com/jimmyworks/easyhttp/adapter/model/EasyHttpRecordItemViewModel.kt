@@ -44,7 +44,7 @@ fun setHttpStatus(textView: TextView, httpRecordInfo: HttpRecordInfo) {
     val status: String
     val statusColor: Int
     if (null != httpStatus) {
-        status = httpStatus.value.toString() + " " + httpStatus.reasonPhrase
+        status = httpStatus.value.toString()
         statusColor = when (httpStatus.series) {
             Series.SUCCESSFUL -> R.color.easyHttpStatusColorSuccess
             Series.INFORMATIONAL, Series.REDIRECTION -> R.color.easyHttpStatusColorWarring

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+		<variable
+			name="itemViewModel"
+			type="com.jimmyworks.easyhttpexample.adapter.model.FormViewModel" />
+	</data>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="5dp"
+		android:background="@drawable/bg_radius_ripple"
+		android:backgroundTint="@color/colorMain01"
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:paddingStart="10dp"
+		android:paddingTop="5dp"
+		android:paddingEnd="7dp"
+		android:paddingBottom="5dp"
+		android:textSize="@dimen/ts_sp02"
+		tools:ignore="HardcodedText,UseAppTint">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@{itemViewModel.key}"
+			android:textColor="@color/colorBackground"
+			tools:ignore="TextContrastCheck" />
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/iv_clear"
+			android:layout_width="18dp"
+			android:layout_height="18dp"
+			android:layout_marginStart="5dp"
+			android:src="@drawable/ic_close"
+			app:tint="@color/colorBackground" />
+
+	</LinearLayout>
+
+</layout>

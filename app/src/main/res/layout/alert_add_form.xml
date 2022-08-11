@@ -48,10 +48,24 @@
 			app:layout_constraintLeft_toLeftOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/et_key" />
 
+		<ToggleButton
+			android:id="@+id/tb_type"
+			android:layout_width="60dp"
+			android:layout_height="30dp"
+			android:layout_marginBottom="5dp"
+			android:background="@drawable/bg_radius_ripple"
+			android:textColor="@color/colorBackground"
+			android:textOff="@string/text"
+			android:textOn="@string/file"
+			android:textSize="@dimen/ts_sp02"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="@id/et_value" />
+
 		<EditText
 			android:id="@+id/et_value"
-			android:layout_width="match_parent"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
+			android:layout_marginEnd="5dp"
 			android:backgroundTint="@color/colorLine"
 			android:imeOptions="flagNoExtractUi"
 			android:importantForAutofill="no"
@@ -59,6 +73,8 @@
 			android:textColor="@color/colorText01"
 			android:textColorHint="@color/colorText03"
 			android:textSize="@dimen/ts_sp02"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@id/tb_type"
 			app:layout_constraintTop_toBottomOf="@id/tv_value"
 			tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck"
 			tools:layout_editor_absoluteX="35dp" />
