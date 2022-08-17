@@ -346,7 +346,7 @@ EasyHttp.get(context, url)
       public void onError(@NonNull HttpException e) {
         // Do something...
       }
- 	 });
+  });
 ```
 
 ### Download response
