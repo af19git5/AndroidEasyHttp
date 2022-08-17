@@ -329,7 +329,7 @@ EasyHttp.get(context, url)
       public void onError(@NonNull HttpException e) {
         // Do something...
       }
- 	 });
+  });
 
 // Use Gson TypeToken
 EasyHttp.get(context, url)
