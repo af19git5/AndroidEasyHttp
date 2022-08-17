@@ -107,7 +107,7 @@
 					android:layout_marginTop="8dp"
 					android:scaleType="centerCrop"
 					android:visibility="@{viewModel.showImage ? View.VISIBLE : View.GONE}"
-					app:imageBitmap="@{viewModel.imageBody}" />
+					imageBitmap="@{viewModel.imageBody}" />
 
 			</LinearLayout>
 

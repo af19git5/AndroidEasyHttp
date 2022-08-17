@@ -92,7 +92,7 @@ class CommonUtils {
     }
 }
 
-@BindingAdapter("app:imageBitmap")
+@BindingAdapter("imageBitmap")
 fun imageBitmap(imageView: ImageView, bitmap: Bitmap?) {
     imageView.setImageBitmap(bitmap)
 }
