@@ -30,6 +30,10 @@
 			android:name=".activity.DemoRequestActivity"
 			android:exported="true" />
 
+		<activity
+			android:name=".activity.AboutActivity"
+			android:exported="true" />
+
 	</application>
 
 </manifest>

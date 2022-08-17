@@ -30,4 +30,5 @@
 	<string name="form_body">Form Body</string>
 	<string name="file">File</string>
 	<string name="text">Text</string>
+	<string name="about_content">This app is demo for EasyHttp Library.\nYou can get more information in the github page.</string>
 </resources>

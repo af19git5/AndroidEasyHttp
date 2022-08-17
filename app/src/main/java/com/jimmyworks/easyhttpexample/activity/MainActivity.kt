@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 EasyHttp.intentEasyHttpRecord(this)
             }
             binding.llAbout.id -> {
-
+                startActivity(Intent(this, AboutActivity::class.java))
             }
         }
     }

@@ -4,8 +4,8 @@
 ## About Android Easy Http Library
 
 * Made on [OkHttp](http://square.github.io/okhttp/).
-* Easy to do http transport, just make request and listen for the response.
-* Visual http transport record, make you debug easily.
+* Easy to do http request, just make request and listen for the response.
+* Visual http request record, make you debug easily.
 * Http cookies persistence and editable.
 
 ## Using Library In Your Application
@@ -79,7 +79,7 @@ EasyHttp.get(context, url)
 * `.addHeader` - Add header for request.
 * `.headers` - Add headers for request.
 * `.cacheable` - Cache response.
-* `.saveRecord` - Do save http transport record. Default value is true.
+* `.saveRecord` - Do save http request record. Default value is true.
 * `.connectTimeout` - Connect timeout time.
 * `.readTimeout` - Read timeout time.
 * `.readTimeout` - Read timeout time.
