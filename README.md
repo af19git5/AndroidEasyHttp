@@ -9,7 +9,7 @@
 
 ### Using Library In Your Application
 
-Add this in your build.gradle
+Add this in your app build.gradle file.
 
 ```groovy
 android {
@@ -23,5 +23,7 @@ dependencies {
     implementation 'io.github.af19git5:easy-http-android:0.0.1'
 }
 ```
+
+And check your application minSdk must be greater than 23.
 
 ### How To Used

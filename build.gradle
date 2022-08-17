@@ -22,7 +22,7 @@ allprojects {
 ext {
     // App tools version
     compileSdkVersion = 32
-    minSdkVersion = 26
+    minSdkVersion = 23
     targetSdkVersion = 32
 
     // App dependencies versions
