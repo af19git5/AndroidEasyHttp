@@ -229,12 +229,12 @@ OkHttpClient.Builder okHttpClientBuilder = requestBuilder.getOkHttpClientBuilder
 requestBuilder.build().getAsString(new StringResponseListener() {
   @Override
   public void onSuccess(@NonNull Headers headers, @NonNull String body) {
-		// Do something...
+	// Do something...
   }
 
   @Override
   public void onError(@NonNull HttpException e) {
-		// Do something...
+	// Do something...
   }
 });
 ```
@@ -379,17 +379,17 @@ EasyHttp.get(context, url)
   .download(file, new DownloadListener() {
     @Override
     public void onSuccess(@NonNull Headers headers, @NonNull File file) {
-			// Do something...
+       // Do something...
     }
 
     @Override
     public void onProgress(long downloadBytes, long totalBytes) {
-			// Do something...
+      // Do something...
     }
 
     @Override
     public void onError(@NonNull HttpException e) {
-			// Do something...
+      // Do something...
     }
   });
 ```
