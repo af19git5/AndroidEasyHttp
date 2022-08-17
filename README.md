@@ -4,9 +4,9 @@
 ## About Android Easy Http Library
 
 * Made on [OkHttp](http://square.github.io/okhttp/).
-* Easy to do http transport.
-* Visual http transport record.
-* Http cookies persistence.
+* Easy to do http transport, just make request and listen for the response.
+* Visual http transport record, make you debug easily.
+* Http cookies persistence and editable.
 
 ## Using Library In Your Application
 
@@ -73,7 +73,7 @@ EasyHttp.get(context, url)
 
 **Value Settings:**
 
-* `.tag` - Add tag for request.
+* `.tag` - Add tag for request, can use in cancel request.
 * `.addUrlParams` - Add url query param.
 * `.urlParams` - Add url query params.
 * `.addHeader` - Add header for request.
@@ -179,7 +179,288 @@ Have the value settings in the get example.
 * `.addMultipartParam` - Add multipart parameter.
 * `.addMultipartFile` - Add multipart parameter. You can put `File`, `ByteArray`,  `Uri`.
 
-### License
+### Cancel Request
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.cancel(tag)
+```
+
+**Java Example:**
+
+```java
+EasyHttp.cancel(tag);
+```
+
+### Custom OkHttpClient Builder
+
+You can easily get OkHttpClient Builder and modify it.
+
+**Kotlin Example:**
+
+```kotlin
+val easyHttpBuilder = EasyHttp.get(context, url)
+val okHttpClientBuilder = easyHttpBuilder.okHttpClientBuilder
+
+// Do something modify for OkHttpClient Builder...
+
+easyHttpBuilder
+  .build()
+  .getAsString(object : StringResponseListener{
+    override fun onSuccess(headers: Headers, body: String) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+RequestBuilder requestBuilder = EasyHttp.get(context, url);
+OkHttpClient.Builder okHttpClientBuilder = requestBuilder.getOkHttpClientBuilder();
+
+// Do something modify for OkHttpClient Builder...
+
+requestBuilder.build().getAsString(new StringResponseListener() {
+  @Override
+  public void onSuccess(@NonNull Headers headers, @NonNull String body) {
+		// Do something...
+  }
+
+  @Override
+  public void onError(@NonNull HttpException e) {
+		// Do something...
+  }
+});
+```
+
+## Response Listener
+
+### Get response as String
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.get(context, url)
+  .build()
+  .getAsString(object : StringResponseListener {
+    override fun onSuccess(headers: Headers, body: String) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+EasyHttp.get(context, url)
+  .build()
+  .getAsString(new StringResponseListener() {
+    @Override
+    public void onSuccess(@NonNull Headers headers, @NonNull String body) {
+      // Do something...
+    }
+
+    @Override
+    public void onError(@NonNull HttpException e) {
+      // Do something...
+    }
+  });
+```
+
+### Get json response as custom object
+
+**Kotlin Example:**
+
+```kotlin
+// Use class
+EasyHttp.get(context, url)
+  .build()
+  .getJsonAsObject(CustomObj::class.java, object : JsonResponseListener<CustomObj> {
+    override fun onSuccess(headers: Headers, body: CustomObj)  {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+
+// Use Gson TypeToken
+EasyHttp.get(context, url)
+  .build()
+  .getJsonAsObject(
+    object : TypeToken<CustomObj>() {},
+    object : JsonResponseListener<CustomObj> {
+      override fun onSuccess(headers: Headers, body: CustomObj) {
+        // Do something...
+      }
+
+      override fun onError(e: HttpException) {
+        // Do something...
+      }
+    })
+```
+
+**Java Example:**
+
+```java
+// Use class
+EasyHttp.get(context, url)
+  .build()
+  .getJsonAsObject(
+    CustomObj.class,
+    new JsonResponseListener<>() {
+      @Override
+      public void onSuccess(@NonNull Headers headers, CustomObj body) {
+        // Do something...
+      }
+
+      @Override
+      public void onError(@NonNull HttpException e) {
+        // Do something...
+      }
+ 	 });
+
+// Use Gson TypeToken
+EasyHttp.get(context, url)
+  .build()
+  .getJsonAsObject(
+    new TypeToken<String>() {},
+    new JsonResponseListener<>() {
+      @Override
+      public void onSuccess(@NonNull Headers headers, CustomObj body) {
+        // Do something...
+      }
+
+      @Override
+      public void onError(@NonNull HttpException e) {
+        // Do something...
+      }
+ 	 });
+```
+
+### Download response
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.get(context, url)
+  .build()
+  .download(file, object : DownloadListener {
+    override fun onSuccess(headers: Headers, file: File) {
+      // Do something...
+    }
+
+    override fun onProgress(downloadBytes: Long, totalBytes: Long) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+EasyHttp.get(context, url)
+  .build()
+  .download(file, new DownloadListener() {
+    @Override
+    public void onSuccess(@NonNull Headers headers, @NonNull File file) {
+			// Do something...
+    }
+
+    @Override
+    public void onProgress(long downloadBytes, long totalBytes) {
+			// Do something...
+    }
+
+    @Override
+    public void onError(@NonNull HttpException e) {
+			// Do something...
+    }
+  });
+```
+
+## Cookie Modify
+
+### Clear cookies
+
+**Kotlin Example:**
+
+```kotlin
+// clear all
+EasyHttp.clearCookies(context)
+// clear by host
+EasyHttp.clearCookies(context, host)
+// clear by host and cookie name
+EasyHttp.clearCookies(context, host, name)
+```
+
+**Java Example:**
+
+```java
+// clear all
+EasyHttp.clearCookies(context);
+// clear by host
+EasyHttp.clearCookies(context, host);
+// clear by host and cookie name
+EasyHttp.clearCookies(context, host, name);
+```
+
+## Android EasyHttp Page
+
+### Http Record Page
+
+If your request `saveRecord` is open, you can find record in the http record page.
+
+**Preview:**
+
+<img src="images/record_preview.png" />
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.intentEasyHttpRecord(context)
+```
+
+**Java Example:**
+
+```java
+EasyHttp.intentEasyHttpRecord(context);
+```
+
+### Cookies Page
+
+**Preview:**
+
+<img src="images/cookies_preview.png" />
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.intentEasyHttpCookies(context)
+```
+
+**Java Example:**
+
+```java
+EasyHttp.intentEasyHttpCookies(context);
+```
+
+## License
 
 ```
 Copyright 2022 Jimmy Kang
