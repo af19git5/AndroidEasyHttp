@@ -49,8 +49,8 @@ open class UploadRequestBuilder : RequestBuilder {
         return this
     }
 
-    override fun addUrlParams(key: String, value: String): UploadRequestBuilder {
-        super.addUrlParams(key, value)
+    override fun addUrlParam(key: String, value: String): UploadRequestBuilder {
+        super.addUrlParam(key, value)
         return this
     }
 
@@ -89,7 +89,7 @@ open class UploadRequestBuilder : RequestBuilder {
         return this
     }
 
-    fun addMultipartParameter(key: String, value: String): UploadRequestBuilder {
+    fun addMultipartParam(key: String, value: String): UploadRequestBuilder {
         multipartBodyBuilder.addFormDataPart(key, value)
         requestStringBuilder
             .append(key)

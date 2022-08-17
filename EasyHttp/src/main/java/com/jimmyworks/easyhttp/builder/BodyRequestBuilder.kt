@@ -47,8 +47,8 @@ class BodyRequestBuilder : RequestBuilder {
         return this
     }
 
-    override fun addUrlParams(key: String, value: String): BodyRequestBuilder {
-        super.addUrlParams(key, value)
+    override fun addUrlParam(key: String, value: String): BodyRequestBuilder {
+        super.addUrlParam(key, value)
         return this
     }
 

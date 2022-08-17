@@ -75,7 +75,7 @@ open class RequestBuilder {
         return this
     }
 
-    open fun addUrlParams(key: String, value: String): RequestBuilder {
+    open fun addUrlParam(key: String, value: String): RequestBuilder {
         this.urlParamsMap[key] = value
         return this
     }

@@ -266,7 +266,7 @@ class DemoRequestActivity : AppCompatActivity(), View.OnClickListener {
                 if (form.isFile) {
                     builder.addMultipartFile(form.key, form.value as Uri)
                 } else {
-                    builder.addMultipartParameter(form.key, form.value as String)
+                    builder.addMultipartParam(form.key, form.value as String)
                 }
             }
             doRequest = builder.build()
