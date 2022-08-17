@@ -31,13 +31,13 @@ Add permission in your AndroidManifest.xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-And check your application minSdk must be greater than 23.
+And check your application minSdk must be greater than 24.
 
-## How To Used
+## Do Request
 
 ### GET Request
 
-Kotlin Example: 
+**Kotlin Example:**
 
 ```kotlin
 EasyHttp.get(context, url)
@@ -53,7 +53,7 @@ EasyHttp.get(context, url)
   })
 ```
 
-Java Example:
+**Java Example:**
 
 ```java
 EasyHttp.get(context, url)
@@ -70,3 +70,111 @@ EasyHttp.get(context, url)
     }
   });
 ```
+
+**Value Settings:**
+
+* `.tag` - Add tag for request.
+* `.addUrlParams` - Add url query param.
+* `.urlParams` - Add url query params.
+* `.addHeader` - Add header for request.
+* `.headers` - Add headers for request.
+* `.cacheable` - Cache response.
+* `.saveRecord` - Do save http transport record. Default value is true.
+* `.connectTimeout` - Connect timeout time.
+* `.readTimeout` - Read timeout time.
+* `.readTimeout` - Read timeout time.
+
+### Post Request
+
+**Kotlin Example: **
+
+```kotlin
+EasyHttp.post(context, url)
+  .jsonBody(obj)
+  .build()
+  .getAsString(object : StringResponseListener {
+    override fun onSuccess(headers: Headers, body: String) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+EasyHttp.post(context, url)
+  .jsonBody(obj)
+  .build()
+  .getAsString(new StringResponseListener() {
+    @Override
+    public void onSuccess(@NonNull Headers headers, @NonNull String body) {
+      // Do something...
+    }
+
+    @Override
+    public void onError(@NonNull HttpException e) {
+      // Do something...
+    }
+  })
+```
+
+**Value Settings:**
+
+Have the value settings in the get example.
+
+* `.stringBody` - Set string request body, also can set your custom content type.
+* `.jsonBody` - Set json object request body, also can set your custom content type.
+* `.formBody` - Set form request body.
+* `.requestBody` - Set your custom okhttp request body.
+
+### Upload File
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.upload(context, url)
+  .addMultipartFile("file", file)
+  .addMultipartParameter("text", "text")
+  .build()
+  .getAsString(object : StringResponseListener {
+    override fun onSuccess(headers: Headers, body: String) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+EasyHttp.upload(context, url)
+  .addMultipartFile("file", file)
+  .addMultipartParameter("text", "text")
+  .build()
+  .getAsString(new StringResponseListener() {
+    @Override
+    public void onSuccess(@NonNull Headers headers, @NonNull String body) {
+      // Do something...
+    }
+
+    @Override
+    public void onError(@NonNull HttpException e) {
+      // Do something...
+    }
+  })
+```
+
+**Value Settings:**
+
+Have the value settings in the get example.
+
+* `.contentType` - Set upload request content type. Default value is "multipart/form-data".
+* `.addMultipartParam` - Add multipart parameter.
+* `.addMultipartFile` - Add multipart parameter. You can put `File`, `ByteArray`,  `Uri`.
