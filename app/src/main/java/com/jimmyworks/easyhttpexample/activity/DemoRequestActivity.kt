@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Patterns
 import android.view.MenuInflater
 import android.view.View
 import android.widget.PopupMenu
@@ -242,6 +243,12 @@ class DemoRequestActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun doRequest() {
+
+        if (!Patterns.WEB_URL.matcher(viewModel.url).matches()) {
+            UiUtils.toast(this, getString(R.string.url_error_hint))
+            return
+        }
+
         val alertDialog = UiUtils.loadingAlertDialog(this)
 
         val headerMap: MutableMap<String, String> = HashMap()
