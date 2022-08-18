@@ -86,7 +86,7 @@ EasyHttp.get(context, url)
 
 ### Post Request
 
-**Kotlin Example: **
+**Kotlin Example:**
 
 ```kotlin
 EasyHttp.post(context, url)
@@ -424,11 +424,15 @@ EasyHttp.clearCookies(context, host, name);
 
 ### Http Record Page
 
+This page can show Easy Http record. 
+
 If your request `saveRecord` is open, you can find record in the http record page.
 
 **Preview:**
 
 <img src="images/record_preview.png" />
+
+You can use this code to intent record page.
 
 **Kotlin Example:**
 
@@ -444,9 +448,15 @@ EasyHttp.intentEasyHttpRecord(context);
 
 ### Cookies Page
 
+This page can show Easy Http persistence cookies.
+
+Also you can modify it.
+
 **Preview:**
 
 <img src="images/cookies_preview.png" />
+
+You can use this code to intent cookies page.
 
 **Kotlin Example:**
 
