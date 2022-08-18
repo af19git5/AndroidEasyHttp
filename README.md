@@ -82,7 +82,7 @@ EasyHttp.get(context, url)
 * `.saveRecord` - Do save http request record. Default value is true.
 * `.connectTimeout` - Connect timeout time.
 * `.readTimeout` - Read timeout time.
-* `.readTimeout` - Read timeout time.
+* `.writeTimeout` - Write timeout time.
 
 ### Post Request
 
