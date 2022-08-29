@@ -27,9 +27,9 @@ class SaveRecordService(
 ) {
     private val httpRecordRepository: HttpRecordRepository = HttpRecordRepository(context)
     private val requestDir: File =
-        CommonUtils.getDiskCacheDir(context, EasyHttpConfig.REQUEST_DIR_NAME)
+        CommonUtils.getDataDir(context, EasyHttpConfig.REQUEST_DIR_NAME)
     private val responseDir: File =
-        CommonUtils.getDiskCacheDir(context, EasyHttpConfig.RESPONSE_DIR_NAME)
+        CommonUtils.getDataDir(context, EasyHttpConfig.RESPONSE_DIR_NAME)
 
     init {
         if (!requestDir.exists()) {

@@ -45,7 +45,7 @@ class EasyHttpRecordRequestFragment : Fragment() {
     private fun initData() {
         val httpRecordRepository = HttpRecordRepository(requireContext())
         val requestDir: File =
-            CommonUtils.getDiskCacheDir(requireContext(), EasyHttpConfig.REQUEST_DIR_NAME)
+            CommonUtils.getDataDir(requireContext(), EasyHttpConfig.REQUEST_DIR_NAME)
 
         httpRecordRepository
             .findRequestHeadersByRecordId(recordId)

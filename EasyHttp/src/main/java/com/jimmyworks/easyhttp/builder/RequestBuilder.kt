@@ -47,7 +47,7 @@ open class RequestBuilder {
     private fun initOkHttpClientBuilder() {
         okHttpClientBuilder.cache(
             Cache(
-                CommonUtils.getDiskCacheDir(
+                CommonUtils.getCacheDir(
                     context, EasyHttpConfig.CACHE_DIR_NAME
                 ),
                 EasyHttpConfig.MAX_CACHE_SIZE

@@ -1,18 +1,16 @@
 # Android Easy Http Library
 <img src="images/banner.png" />
 
-[繁體中文文檔](README_ZH.md)
+## 關於Easy Http Library
 
-## About Android Easy Http Library
+* 基底利用 [OkHttp](http://square.github.io/okhttp/)進行開發。
+* 簡化請求，只需複寫回傳監聽。
+* 可視覺化的傳輸紀錄，方便debug。
+* Http cookies持久化，不需額外手動撰寫。
 
-* Made on [OkHttp](http://square.github.io/okhttp/).
-* Easy to do http request, just make request and listen for the response.
-* Visual http request record, make you debug easily.
-* Http cookies persistence and editable.
+## 如何使用在自己專案
 
-## Using Library In Your Application
-
-Add this in your app build.gradle file.
+將以下代碼加入至專案中的 build.gradle。
 
 ```groovy
 android {
@@ -27,15 +25,15 @@ dependencies {
 }
 ```
 
-Add permission in your AndroidManifest.xml
+在專案中的AndroidManifest.xml加入網路權限。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-And check your application minSdk must be greater than 24.
+確認自己專案的minSdk必須大於24。
 
-## Do Request
+## 執行請求
 
 ### GET Request
 
@@ -73,18 +71,18 @@ EasyHttp.get(context, url)
   });
 ```
 
-**Value Settings:**
+**可設定參數:**
 
-* `.tag` - Add tag for request, can use in cancel request.
-* `.addUrlParams` - Add url query param.
-* `.urlParams` - Add url query params.
-* `.addHeader` - Add header for request.
-* `.headers` - Add headers for request.
-* `.cacheable` - Cache response.
-* `.saveRecord` - Do save http request record. Default value is true.
-* `.connectTimeout` - Connect timeout time.
-* `.readTimeout` - Read timeout time.
-* `.writeTimeout` - Write timeout time.
+* `.tag` - 將請求增加tag，可用來取消請求用。
+* `.addUrlParams` - 增加url查詢參數。
+* `.urlParams` - 設定url查詢參數。
+* `.addHeader` - 增加header。
+* `.headers` - 設定headers。
+* `.cacheable` - 結果是否加入快取。
+* `.saveRecord` - 是否要寫入傳輸紀錄，預設為true。
+* `.connectTimeout` - 連線超時最大時長。
+* `.readTimeout` - 讀取超時最大時長。
+* `.writeTimeout` - 寫入超時最大時長。
 
 ### Post Request
 
@@ -124,16 +122,16 @@ EasyHttp.post(context, url)
   })
 ```
 
-**Value Settings:**
+**可設定參數:**
 
-Have the value settings in the get example.
+擁有上面Get request可設定參數，及下列可設定參數。
 
-* `.stringBody` - Set string request body, also can set your custom content type.
-* `.jsonBody` - Set json object request body, also can set your custom content type.
-* `.formBody` - Set form request body.
-* `.requestBody` - Set your custom okhttp request body.
+* `.stringBody` - 設定字串request body，也可客製化選擇想傳輸的content-type。
+* `.jsonBody` - 設定json物件request body，也可客製化選擇想傳輸的content-type。
+* `.formBody` - 設定form request body。
+* `.requestBody` - 設定自己客製化的okhttp request body。
 
-### Upload File
+### 上傳檔案
 
 **Kotlin Example:**
 
@@ -173,15 +171,15 @@ EasyHttp.upload(context, url)
   })
 ```
 
-**Value Settings:**
+**可設定參數:**
 
-Have the value settings in the get example.
+擁有上面Get request可設定參數，及下列可設定參數。
 
-* `.contentType` - Set upload request content type. Default value is "multipart/form-data".
-* `.addMultipartParam` - Add multipart parameter.
-* `.addMultipartFile` - Add multipart parameter. You can put `File`, `ByteArray`,  `Uri`.
+* `.contentType` - 設定content-type，預設值為 "multipart/form-data"。
+* `.addMultipartParam` - 增加multipart參數.
+* `.addMultipartFile` - 增加multipart參數，可放置 `File`, `ByteArray`,  `Uri`.
 
-### Cancel Request
+### 取消 Request
 
 **Kotlin Example:**
 
@@ -195,9 +193,9 @@ EasyHttp.cancel(tag)
 EasyHttp.cancel(tag);
 ```
 
-### Custom OkHttpClient Builder
+### 客製化 OkHttpClient Builder
 
-You can easily get OkHttpClient Builder and modify it.
+你可以很簡單取得傳輸使用的OkHttpClient Builder，並且客製化為您的需求。
 
 **Kotlin Example:**
 
@@ -241,9 +239,9 @@ requestBuilder.build().getAsString(new StringResponseListener() {
 });
 ```
 
-## Response Listener
+## Response 監聽器
 
-### Get response as String
+### 取得字串Response
 
 **Kotlin Example:**
 
@@ -279,7 +277,7 @@ EasyHttp.get(context, url)
   });
 ```
 
-### Get json response as custom object
+### 取得Json Response並轉為客製化的物件
 
 **Kotlin Example:**
 
@@ -351,7 +349,7 @@ EasyHttp.get(context, url)
   });
 ```
 
-### Download response
+### 下載Response
 
 **Kotlin Example:**
 
@@ -396,9 +394,9 @@ EasyHttp.get(context, url)
   });
 ```
 
-## Cookie Modify
+## Cookie異動
 
-### Clear cookies
+### 清理Cookies
 
 **Kotlin Example:**
 
@@ -422,19 +420,19 @@ EasyHttp.clearCookies(context, host);
 EasyHttp.clearCookies(context, host, name);
 ```
 
-## Android EasyHttp Page
+## Android EasyHttp頁面
 
-### Http Record Page
+### Http傳輸紀錄頁面
 
-This page can show Easy Http record. 
+在這頁面會紀錄您使用EasyHttp的紀錄。
 
-If your request `saveRecord` is open, you can find record in the http record page.
+如果您的請求中的 `saveRecord`是開啟的，您可以在這頁中找到您的傳輸紀錄。
 
 **Preview:**
 
 <img src="images/record_preview.png" />
 
-You can use this code to intent record page.
+您可以使用下面的代碼跳轉至本頁面。
 
 **Kotlin Example:**
 
@@ -448,17 +446,17 @@ EasyHttp.intentEasyHttpRecord(context)
 EasyHttp.intentEasyHttpRecord(context);
 ```
 
-### Cookies Page
+### Cookies頁面
 
-This page can show Easy Http persistence cookies.
+在這頁面會顯示EasyHttp持久化的cookies。
 
-Also you can modify it.
+您也可以在這頁面進行異動cookies。
 
 **Preview:**
 
 <img src="images/cookies_preview.png" />
 
-You can use this code to intent cookies page.
+您可以使用下面的代碼跳轉至本頁面。
 
 **Kotlin Example:**
 
@@ -472,7 +470,7 @@ EasyHttp.intentEasyHttpCookies(context)
 EasyHttp.intentEasyHttpCookies(context);
 ```
 
-## Demo App
+## 範例App
 
 [<img src="images/play_store_download.png" width="200">](https://play.google.com/store/apps/details?id=com.jimmyworks.easyhttpexample)
 
@@ -493,4 +491,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-

@@ -42,7 +42,18 @@ class CommonUtils {
          * @param dirName 目錄名稱
          * @return 快取目錄
          */
-        fun getDiskCacheDir(context: Context, dirName: String): File {
+        fun getDataDir(context: Context, dirName: String): File {
+            return File(context.dataDir, dirName)
+        }
+
+        /**
+         * 取得快取目錄
+         *
+         * @param context Context
+         * @param dirName 目錄名稱
+         * @return 快取目錄
+         */
+        fun getCacheDir(context: Context, dirName: String): File {
             return File(context.cacheDir, dirName)
         }
 

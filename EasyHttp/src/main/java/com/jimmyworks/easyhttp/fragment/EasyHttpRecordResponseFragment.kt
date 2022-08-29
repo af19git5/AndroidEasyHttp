@@ -47,7 +47,7 @@ class EasyHttpRecordResponseFragment : Fragment() {
     private fun initData() {
         val httpRecordRepository = HttpRecordRepository(requireContext())
         val responseDir: File =
-            CommonUtils.getDiskCacheDir(requireContext(), EasyHttpConfig.RESPONSE_DIR_NAME)
+            CommonUtils.getDataDir(requireContext(), EasyHttpConfig.RESPONSE_DIR_NAME)
         httpRecordRepository
             .findResponseHeadersByRecordId(recordId)
             .observe(viewLifecycleOwner) { headerList ->
