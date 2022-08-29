@@ -3,8 +3,8 @@
 
 ## 關於Easy Http Library
 
-* 基底利用 [OkHttp](http://square.github.io/okhttp/)進行開發。
-* 簡化請求，只需複寫回傳監聽。
+* Http連線基底框架為 [OkHttp](http://square.github.io/okhttp/)進行開發。
+* 簡化請求，只需覆寫回傳監聽。
 * 可視覺化的傳輸紀錄，方便debug。
 * Http cookies持久化，不需額外手動撰寫。
 
@@ -37,7 +37,7 @@ dependencies {
 
 ### GET Request
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.get(context, url)
@@ -53,7 +53,7 @@ EasyHttp.get(context, url)
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.get(context, url)
@@ -86,7 +86,7 @@ EasyHttp.get(context, url)
 
 ### Post Request
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.post(context, url)
@@ -103,7 +103,7 @@ EasyHttp.post(context, url)
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.post(context, url)
@@ -133,7 +133,7 @@ EasyHttp.post(context, url)
 
 ### 上傳檔案
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.upload(context, url)
@@ -151,7 +151,7 @@ EasyHttp.upload(context, url)
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.upload(context, url)
@@ -177,17 +177,17 @@ EasyHttp.upload(context, url)
 
 * `.contentType` - 設定content-type，預設值為 "multipart/form-data"。
 * `.addMultipartParam` - 增加multipart參數.
-* `.addMultipartFile` - 增加multipart參數，可放置 `File`, `ByteArray`,  `Uri`.
+* `.addMultipartFile` - 增加multipart檔案參數，可放置 `File`, `ByteArray`,  `Uri`.
 
 ### 取消 Request
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.cancel(tag)
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.cancel(tag);
@@ -195,9 +195,9 @@ EasyHttp.cancel(tag);
 
 ### 客製化 OkHttpClient Builder
 
-你可以很簡單取得傳輸使用的OkHttpClient Builder，並且客製化為您的需求。
+您可以很簡單取得傳輸使用的OkHttpClient Builder，並且客製化為您的需求。
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 val easyHttpBuilder = EasyHttp.get(context, url)
@@ -218,7 +218,7 @@ easyHttpBuilder
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 RequestBuilder requestBuilder = EasyHttp.get(context, url);
@@ -243,7 +243,7 @@ requestBuilder.build().getAsString(new StringResponseListener() {
 
 ### 取得字串Response
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.get(context, url)
@@ -259,7 +259,7 @@ EasyHttp.get(context, url)
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.get(context, url)
@@ -279,7 +279,7 @@ EasyHttp.get(context, url)
 
 ### 取得Json Response並轉為客製化的物件
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 // Use class
@@ -311,7 +311,7 @@ EasyHttp.get(context, url)
     })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 // Use class
@@ -351,7 +351,7 @@ EasyHttp.get(context, url)
 
 ### 下載Response
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.get(context, url)
@@ -371,7 +371,7 @@ EasyHttp.get(context, url)
   })
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.get(context, url)
@@ -398,7 +398,7 @@ EasyHttp.get(context, url)
 
 ### 清理Cookies
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 // clear all
@@ -409,7 +409,7 @@ EasyHttp.clearCookies(context, host)
 EasyHttp.clearCookies(context, host, name)
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 // clear all
@@ -428,19 +428,19 @@ EasyHttp.clearCookies(context, host, name);
 
 如果您的請求中的 `saveRecord`是開啟的，您可以在這頁中找到您的傳輸紀錄。
 
-**Preview:**
+**畫面預覽:**
 
 <img src="images/record_preview.png" />
 
 您可以使用下面的代碼跳轉至本頁面。
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.intentEasyHttpRecord(context)
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.intentEasyHttpRecord(context);
@@ -452,19 +452,19 @@ EasyHttp.intentEasyHttpRecord(context);
 
 您也可以在這頁面進行異動cookies。
 
-**Preview:**
+**畫面預覽:**
 
 <img src="images/cookies_preview.png" />
 
 您可以使用下面的代碼跳轉至本頁面。
 
-**Kotlin Example:**
+**Kotlin範例:**
 
 ```kotlin
 EasyHttp.intentEasyHttpCookies(context)
 ```
 
-**Java Example:**
+**Java範例:**
 
 ```java
 EasyHttp.intentEasyHttpCookies(context);
