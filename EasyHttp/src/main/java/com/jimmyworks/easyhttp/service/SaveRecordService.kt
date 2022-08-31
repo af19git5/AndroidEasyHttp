@@ -100,7 +100,7 @@ class SaveRecordService(
         saveResponse(id, responseInfo)
     }
 
-    fun save(errorMessage: String?) {
+    fun save(errorMessage: String) {
         val httpRecordInfo = HttpRecordInfo(
             null,
             requestInfo.url,

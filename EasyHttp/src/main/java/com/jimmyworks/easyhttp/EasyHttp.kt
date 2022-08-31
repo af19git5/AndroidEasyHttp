@@ -11,7 +11,11 @@ import com.jimmyworks.easyhttp.database.repository.HttpCookiesRepository
 import com.jimmyworks.easyhttp.service.DoRequestService
 import com.jimmyworks.easyhttp.type.HttpMethod
 
-
+/**
+ * EasyHttp
+ *
+ * @author Jimmy Kang
+ */
 class EasyHttp {
 
     companion object {

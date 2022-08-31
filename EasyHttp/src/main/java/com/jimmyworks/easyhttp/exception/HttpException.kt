@@ -1,11 +1,13 @@
 package com.jimmyworks.easyhttp.exception
 
 /**
- * 類別無對應錯誤
+ * http錯誤
  *
  * @author Jimmy Kang
  */
 class HttpException : Exception {
+
+    override val message: String
 
     val url: String
 
@@ -14,12 +16,14 @@ class HttpException : Exception {
     val responseBody: String?
 
     constructor(url: String, errorMessage: String) : super("url: $url, $errorMessage") {
+        this.message = "url: $url, $errorMessage"
         this.url = url
         this.httpCode = 0
         this.responseBody = null
     }
 
     constructor(url: String, e: Exception) : super("url: $url, ${e.message}") {
+        this.message = "url: $url, ${e.message}"
         this.url = url
         this.httpCode = 0
         this.responseBody = null
@@ -30,6 +34,7 @@ class HttpException : Exception {
         httpCode: Int,
         responseBody: String
     ) : super("url: $url, http code: $httpCode, responseBody: $responseBody") {
+        this.message = "url: $url, http code: $httpCode, responseBody: $responseBody"
         this.url = url
         this.httpCode = httpCode
         this.responseBody = responseBody

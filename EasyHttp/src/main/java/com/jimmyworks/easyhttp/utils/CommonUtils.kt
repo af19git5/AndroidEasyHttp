@@ -23,6 +23,16 @@ import kotlin.math.abs
  */
 class CommonUtils {
     companion object {
+        /**
+         * 產生UUID
+         *
+         * @return UUID
+         */
+        fun createUUID(): String {
+            var uuid = UUID.randomUUID().toString()
+            uuid = uuid.replace("-", "")
+            return uuid
+        }
 
         /**
          * 執行在主執行緒

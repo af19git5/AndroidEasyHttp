@@ -11,6 +11,8 @@ object EasyHttpConfig {
 
     const val CACHE_DIR_NAME: String = "cache_easy_http"
 
+    const val IMAGE_CACHE_DIR_NAME: String = "image_cache_easy_http"
+
     const val REQUEST_DIR_NAME: String = "easy_http_request_record"
 
     const val RESPONSE_DIR_NAME: String = "easy_http_response_record"

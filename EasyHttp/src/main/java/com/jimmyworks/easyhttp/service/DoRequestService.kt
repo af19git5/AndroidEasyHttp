@@ -1,10 +1,14 @@
 package com.jimmyworks.easyhttp.service
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import com.google.gson.reflect.TypeToken
+import com.jimmyworks.easyhttp.EasyHttpConfig
 import com.jimmyworks.easyhttp.entity.RequestInfo
 import com.jimmyworks.easyhttp.entity.ResponseInfo
 import com.jimmyworks.easyhttp.exception.HttpException
+import com.jimmyworks.easyhttp.listener.BitmapResponseListener
 import com.jimmyworks.easyhttp.listener.DownloadListener
 import com.jimmyworks.easyhttp.listener.JsonResponseListener
 import com.jimmyworks.easyhttp.listener.StringResponseListener
@@ -61,7 +65,7 @@ class DoRequestService(
                 }
 
                 if (isSaveRecord) {
-                    saveRecordService.save(e.message)
+                    saveRecordService.save(e.message ?: "")
                 }
             }
 
@@ -157,6 +161,49 @@ class DoRequestService(
         })
     }
 
+    fun getAsBitmap(bitmapResponseListener: BitmapResponseListener) {
+        getAsBitmap(null, bitmapResponseListener)
+    }
+
+    fun getAsBitmap(
+        bitmapOptions: BitmapFactory.Options?,
+        bitmapResponseListener: BitmapResponseListener
+    ) {
+        val imageCacheFile = File(
+            CommonUtils.getCacheDir(context, EasyHttpConfig.IMAGE_CACHE_DIR_NAME),
+            CommonUtils.createUUID()
+        )
+        FileUtils.mkdir(imageCacheFile.parentFile!!)
+        download(imageCacheFile, object : DownloadListener {
+            override fun onSuccess(headers: Headers, file: File) {
+                val bitmap: Bitmap? = if (null == bitmapOptions) {
+                    BitmapFactory.decodeFile(file.path)
+                } else {
+                    BitmapFactory.decodeFile(file.path, bitmapOptions)
+                }
+                FileUtils.delete(file)
+                if (null == bitmap) {
+                    bitmapResponseListener.onError(
+                        HttpException(
+                            requestInfo.url,
+                            "Convert response to bitmap fail."
+                        )
+                    )
+                    return
+                }
+                bitmapResponseListener.onSuccess(headers, bitmap)
+            }
+
+            override fun onProgress(downloadBytes: Long, totalBytes: Long) {
+                bitmapResponseListener.onProgress(downloadBytes, totalBytes)
+            }
+
+            override fun onError(e: HttpException) {
+                bitmapResponseListener.onError(e)
+            }
+        })
+    }
+
     fun download(file: File, downloadListener: DownloadListener) {
         val saveRecordService = SaveRecordService(context, requestInfo, Date())
         FileUtils.mkdir(file.parentFile!!)
@@ -168,7 +215,7 @@ class DoRequestService(
                 }
 
                 if (isSaveRecord) {
-                    saveRecordService.save(e.message)
+                    saveRecordService.save(e.message ?: "")
                 }
             }
 

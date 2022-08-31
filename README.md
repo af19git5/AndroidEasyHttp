@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation 'io.github.af19git5:easy-http-android:0.0.3'
+    implementation 'io.github.af19git5:easy-http-android:0.0.4'
 }
 ```
 
@@ -348,6 +348,51 @@ EasyHttp.get(context, url)
       public void onError(@NonNull HttpException e) {
         // Do something...
       }
+  });
+```
+
+### Get response as bitmap
+
+**Kotlin Example:**
+
+```kotlin
+EasyHttp.get(context, url)
+  .build()
+  .getAsBitmap(file, object : BitmapResponseListener {
+    override fun onSuccess(headers: Headers, bitmap: Bitmap) {
+      // Do something...
+    }
+
+    override fun onProgress(downloadBytes: Long, totalBytes: Long) {
+      // Do something...
+    }
+
+    override fun onError(e: HttpException) {
+      // Do something...
+    }
+  })
+```
+
+**Java Example:**
+
+```java
+EasyHttp.get(context, url)
+  .build()
+  .getAsBitmap(file, new BitmapResponseListener() {
+    @Override
+    public void onSuccess(@NonNull Headers headers, @NonNull Bitmap bitmap) {
+       // Do something...
+    }
+
+    @Override
+    public void onProgress(long downloadBytes, long totalBytes) {
+      // Do something...
+    }
+
+    @Override
+    public void onError(@NonNull HttpException e) {
+      // Do something...
+    }
   });
 ```
 
