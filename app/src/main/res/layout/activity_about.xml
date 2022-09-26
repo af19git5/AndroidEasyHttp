@@ -24,7 +24,6 @@
 				android:layout_width="0dp"
 				android:layout_height="50dp"
 				android:gravity="center_vertical"
-				android:singleLine="true"
 				android:text="@string/about"
 				android:textColor="@color/colorBackground"
 				android:textSize="@dimen/easy_http_ts_sp05"
@@ -41,9 +40,9 @@
 				android:onClick="onClick"
 				android:padding="10dp"
 				android:src="@drawable/easy_http_ic_close"
-				android:tint="@color/colorBackground"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
+				app:tint="@color/colorBackground"
 				tools:ignore="SpeakableTextPresentCheck" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,7 +70,7 @@
 					android:layout_marginTop="10dp"
 					android:background="@drawable/bg_round"
 					android:padding="5dp"
-					android:src="@mipmap/ic_launcher_round"
+					android:src="@drawable/ic_app_round"
 					app:layout_constraintLeft_toLeftOf="parent"
 					app:layout_constraintRight_toRightOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />

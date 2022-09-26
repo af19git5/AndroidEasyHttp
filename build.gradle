@@ -21,9 +21,9 @@ allprojects {
 
 ext {
     // App tools version
-    compileSdkVersion = 32
+    compileSdkVersion = 33
     minSdkVersion = 24
-    targetSdkVersion = 32
+    targetSdkVersion = 33
 
     // App dependencies versions
     okHttp3Version = '4.10.0'
