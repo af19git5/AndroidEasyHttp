@@ -471,7 +471,7 @@ EasyHttp.clearCookies(context, host, name);
 
 在這頁面會顯示您使用EasyHttp的傳輸紀錄(最多只保留最新1000筆紀錄)。
 
-如果您的請求中的`saveRecord`是開啟的，您可以在這頁中找到您的傳輸紀錄。
+如果您的請求中`saveRecord`是開啟的話，您可以在這頁中找到您的傳輸紀錄。
 
 **畫面預覽:**
 
