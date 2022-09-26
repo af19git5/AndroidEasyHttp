@@ -17,5 +17,5 @@ object EasyHttpConfig {
 
     const val RESPONSE_DIR_NAME: String = "easy_http_response_record"
 
-    const val MAX_RECORD_COUNT: Int = 500
+    const val MAX_RECORD_COUNT: Int = 1000
 }

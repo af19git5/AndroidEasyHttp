@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation 'io.github.af19git5:easy-http-android:0.0.4'
+    implementation 'io.github.af19git5:easy-http-android:0.0.5'
 }
 ```
 

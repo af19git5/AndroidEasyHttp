@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    implementation 'io.github.af19git5:easy-http-android:0.0.4'
+    implementation 'io.github.af19git5:easy-http-android:0.0.5'
 }
 ```
 
@@ -469,9 +469,9 @@ EasyHttp.clearCookies(context, host, name);
 
 ### Http傳輸紀錄頁面
 
-在這頁面會紀錄您使用EasyHttp的紀錄。
+在這頁面會顯示您使用EasyHttp的傳輸紀錄(最多只保留最新1000筆紀錄)。
 
-如果您的請求中的 `saveRecord`是開啟的，您可以在這頁中找到您的傳輸紀錄。
+如果您的請求中的`saveRecord`是開啟的，您可以在這頁中找到您的傳輸紀錄。
 
 **畫面預覽:**
 

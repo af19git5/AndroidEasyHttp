@@ -27,7 +27,7 @@
 				android:singleLine="true"
 				android:text="@string/easy_http_record_details"
 				android:textColor="@color/easyHttpColorBackground"
-				android:textSize="@dimen/easy_http_ts_dp05"
+				android:textSize="@dimen/easy_http_ts_sp05"
 				android:textStyle="bold"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toLeftOf="@id/iv_download"
