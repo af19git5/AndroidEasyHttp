@@ -10,7 +10,7 @@
 
 ## 如何使用在自己專案
 
-將以下代碼加入至專案中的 build.gradle。
+將以下代碼加入至專案中的build.gradle。
 
 ```groovy
 android {
@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    implementation 'io.github.af19git5:easy-http-android:0.0.5'
+    implementation 'io.github.af19git5:easy-http-android:0.0.6'
 }
 ```
 
