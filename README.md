@@ -337,7 +337,7 @@ EasyHttp.get(context, url)
 EasyHttp.get(context, url)
   .build()
   .getJsonAsObject(
-    new TypeToken<String>() {},
+    new TypeToken<CustomObj>() {},
     new JsonResponseListener<>() {
       @Override
       public void onSuccess(@NonNull Headers headers, CustomObj body) {
