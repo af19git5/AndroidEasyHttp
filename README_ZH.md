@@ -1,7 +1,7 @@
 # Android Easy Http Library
 <img src="images/banner.png" />
 
-## 關於Easy Http Library
+## 關於Android Easy Http Library
 
 * Http連線基底框架為 [OkHttp](http://square.github.io/okhttp/)進行開發。
 * 簡化請求，只需覆寫回傳監聽。
