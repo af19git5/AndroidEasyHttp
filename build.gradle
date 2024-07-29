@@ -8,7 +8,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.2' apply false
     id 'com.android.library' version '7.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.25' apply false
 }
 
 allprojects {
@@ -21,9 +21,9 @@ allprojects {
 
 ext {
     // App tools version
-    compileSdkVersion = 33
+    compileSdkVersion = 34
     minSdkVersion = 24
-    targetSdkVersion = 33
+    targetSdkVersion = 34
 
     // App dependencies versions
     okHttp3Version = '4.10.0'
