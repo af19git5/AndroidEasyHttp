@@ -10,8 +10,8 @@ android {
         applicationId "com.jimmyworks.easyhttpexample"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode 8
-        versionName "1.0.3"
+        versionCode 9
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
